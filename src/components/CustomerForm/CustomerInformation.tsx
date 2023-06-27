@@ -1,5 +1,5 @@
-import PrimaryOwnerSection from '../secondary/customer_form_sections/PrimaryOwnerSection';
-import HorizontalDivider from '../secondary/HorizontalDivider';
+import PrimaryOwnerSection from './customer_form_sections/PrimaryOwnerSection';
+import HorizontalDivider from '../HorizontalDivider/HorizontalDivider';
 
 const CustomerInformation = () => {
 	return (

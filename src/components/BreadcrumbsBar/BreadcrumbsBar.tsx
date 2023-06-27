@@ -31,25 +31,23 @@ const BreadcrumbsBar = (props: { currentStep: number }) => {
 				style={{ display: 'inline-block' }}
 			>
 				<Link
-					underline={props.currentStep === 1 ? 'none' : 'hover'}
+					underline='none'
 					sx={{ display: 'flex' }}
 					color={props.currentStep === 1 ? '#539b05' : 'inherit'}
 					fontWeight={props.currentStep === 1 ? 'bold' : 'normal'}
-					href='/'
 				>
 					&#10102; Account Type
 				</Link>
 				<Link
-					underline={props.currentStep === 2 ? 'none' : 'hover'}
+					underline='none'
 					sx={{ display: 'flex' }}
 					color={props.currentStep === 2 ? '#539b05' : 'inherit'}
 					fontWeight={props.currentStep === 2 ? 'bold' : 'normal'}
-					href='/material-ui/getting-started/installation/'
 				>
 					&#10103; Customer Information
 				</Link>
 				<Link
-					underline={props.currentStep === 3 ? 'none' : 'hover'}
+					underline='none' 
 					sx={{ display: 'flex' }}
 					color={props.currentStep === 3 ? '#539b05' : 'inherit'}
 					fontWeight={props.currentStep === 3 ? 'bold' : 'normal'}

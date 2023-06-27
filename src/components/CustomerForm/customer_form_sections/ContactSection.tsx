@@ -1,4 +1,4 @@
-import TextField from '../Textfield';
+import TextField from "../../Textfield/Textfield";
 
 const ContactSection = () => {
 	return (

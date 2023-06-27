@@ -1,14 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Header from '../components/secondary/Header';
-import BreadcrumbsBar from '../components/secondary/BreadcrumbsBar';
-import CustomerForm from '../components/primary/CustomerForm';
+import BreadcrumbsBar from '../components/BreadcrumbsBar/BreadcrumbsBar';
+import CustomerForm from '../components/CustomerForm/CustomerForm';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-	<React.StrictMode>
-		<Header />
+const CustomerScreen = () => {
+	return (
+		<>
+			<BreadcrumbsBar currentStep={2} />
+			<CustomerForm />
+		</>
+	);
+};
 
-		<BreadcrumbsBar currentStep={2} />
-		<CustomerForm />
-	</React.StrictMode>
-);
+export default CustomerScreen;

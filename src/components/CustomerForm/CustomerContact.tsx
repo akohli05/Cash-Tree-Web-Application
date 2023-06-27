@@ -1,6 +1,6 @@
-import HorizontalDivider from '../secondary/HorizontalDivider';
-import CitizenshipSection from '../secondary/customer_form_sections/CitizenshipSection';
-import ContactSection from '../secondary/customer_form_sections/ContactSection';
+import HorizontalDivider from '../HorizontalDivider/HorizontalDivider';
+import CitizenshipSection from './customer_form_sections/CitizenshipSection';
+import ContactSection from './customer_form_sections/ContactSection';
 
 const CustomerContact = () => {
 	return (

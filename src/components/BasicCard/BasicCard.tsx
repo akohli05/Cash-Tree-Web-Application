@@ -2,10 +2,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import styled from '@emotion/styled';
-import SavingsIcon from './account_type_icons/SavingsIcon';
-import MoneyMarketIcon from './account_type_icons/MoneyMarketIcon';
-import CDIcon from './account_type_icons/CDIcon';
-import SpendingIcon from './account_type_icons/SpendingIcon';
+import SavingsIcon from '../AccountSelection/account_type_icons/SavingsIcon';
+import MoneyMarketIcon from '../AccountSelection/account_type_icons/MoneyMarketIcon';
+import CDIcon from '../AccountSelection/account_type_icons/CDIcon';
+import SpendingIcon from '../AccountSelection/account_type_icons/SpendingIcon';
 import { CardActionArea } from '@mui/material';
 
 const StyledCard = styled(Card)({

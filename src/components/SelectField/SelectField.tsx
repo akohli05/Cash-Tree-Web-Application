@@ -59,7 +59,7 @@ const SelectField = (props: { label: string; value: string[] }) => {
 				<InputLabel
 					shrink
 					htmlFor='selectfield'
-					style={{ marginLeft: '0px 0px -10px -11px' }}
+					style={{ marginLeft: '0px 0px 0px 0px' }}
 				>
 					{props.label}
 				</InputLabel>

@@ -1,7 +1,7 @@
-import TextField from '../Textfield';
-import SelectField from '../SelectField';
-import BasicDateField from '../BasicDateField';
-import SocialSecurityField from '../SocialSecurityField';
+import TextField from '../../Textfield/Textfield';
+import SelectField from '../../SelectField/SelectField';
+import BasicDateField from '../../BasicDateField/BasicDateField';
+import SocialSecurityField from '../../SocialSecurityField/SocialSecurityField';
 
 const PrimaryOwnerSection = () => {
 	const suffixItems: string[] = ['Jr.', 'Sr.', 'II', 'III', 'IV', 'V'];
