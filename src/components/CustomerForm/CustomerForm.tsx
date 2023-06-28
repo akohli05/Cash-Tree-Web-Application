@@ -1,8 +1,9 @@
 import BasicButton from '../Button/Button';
-import CustomerInformation from './CustomerInformation';
-import CustomerContact from './CustomerContact';
-import CustomerHomeAddress from './CustomerHomeAddress';
-import CustomerMailingAddress from './CustomerMailingAddress';
+import PrimaryOwnerSection from './customer_form_sections/PrimaryOwnerSection';
+import CitizenshipSection from './customer_form_sections/CitizenshipSection';
+import ContactSection from './customer_form_sections/ContactSection';
+import HomeAddressSection from './customer_form_sections/HomeAddressSection';
+import MailingAddressSection from './customer_form_sections/MailingAddressSection';
 import { useNavigate } from 'react-router-dom';
 
 const CustomerForm = () => {
@@ -21,10 +22,11 @@ const CustomerForm = () => {
 					marginLeft: 200,
 				}}
 			>
-				<CustomerInformation />
-				<CustomerContact />
-				<CustomerHomeAddress />
-				<CustomerMailingAddress />
+				<PrimaryOwnerSection />
+				<CitizenshipSection />
+				<ContactSection />
+				<HomeAddressSection />
+				<MailingAddressSection />
 			</form>
 
 			<BasicButton

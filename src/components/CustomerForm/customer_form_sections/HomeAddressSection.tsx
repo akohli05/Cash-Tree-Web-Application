@@ -1,6 +1,7 @@
 import TextField from '../../Textfield/Textfield';
 import SelectField from '../../SelectField/SelectField';
 import states from '../../../data/states';
+import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
 
 const HomeAddressSection = () => {
 	const statesList: string[] = [];
@@ -9,6 +10,9 @@ const HomeAddressSection = () => {
 	}
 	return (
 		<div>
+			<p style={{ margin: '20px 0px 0px -120px' }}>Home Address</p>
+			<HorizontalDivider />
+
 			<TextField label='Address' />
 			<br />
 			<TextField label='Address Line 2 (Optional)' />

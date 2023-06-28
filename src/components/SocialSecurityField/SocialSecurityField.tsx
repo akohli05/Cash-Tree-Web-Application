@@ -3,6 +3,7 @@ import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import { SelectChangeEvent } from '@mui/material';
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
 	'label + &': {
@@ -43,7 +44,16 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 	},
 }));
 
-const SocialSecurityField = (props: { label: string }) => {
+const SocialSecurityField = (props: {
+	label: string;
+	value: number;
+	name: string;
+	handleChange: (
+		event:
+			| React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+			| SelectChangeEvent<unknown>
+	) => void;
+}) => {
 	return (
 		<Box
 			component='form'
@@ -65,6 +75,9 @@ const SocialSecurityField = (props: { label: string }) => {
 					id='bootstrap-input'
 					placeholder='***-**-****'
 					inputProps={{ maxLength: 9 }}
+					value={props.value}
+					name={props.name}
+					onChange={(e) => props.handleChange(e)}
 				/>
 			</FormControl>
 		</Box>

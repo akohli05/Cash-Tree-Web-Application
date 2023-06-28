@@ -46,7 +46,7 @@ const StyledDateField = styled(DateField)(({ theme }) => ({
 	},
 }));
 
-const BasicDateField = (props: { label: string }) => {
+const BasicDateField = (props: { label: string, value: string, name: string }) => {
 	return (
 		<Box
 			component='form'
@@ -69,6 +69,8 @@ const BasicDateField = (props: { label: string }) => {
 						<StyledDateField
 							id='datefield'
 							style={{ marginTop: '10px', marginLeft: '0px' }}
+							value={props.value}
+							name={props.name}
 						/>
 					</DemoContainer>
 				</LocalizationProvider>

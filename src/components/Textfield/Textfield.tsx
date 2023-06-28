@@ -3,6 +3,7 @@ import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import { SelectChangeEvent } from '@mui/material';
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
 	'label + &': {
@@ -43,7 +44,14 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 	},
 }));
 
-const TextField = (props: { label: string }) => {
+const TextField = (props: {
+	label: string;
+	value: string | undefined;
+	name: string;
+	handleChange: (
+		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<unknown>
+	) => void;
+}) => {
 	return (
 		<Box
 			component='form'
@@ -61,7 +69,12 @@ const TextField = (props: { label: string }) => {
 				>
 					{props.label}
 				</InputLabel>
-				<BootstrapInput id='bootstrap-input' />
+				<BootstrapInput
+					id='bootstrap-input'
+					value={props.value}
+					name={props.name}
+					onChange={(e) => props.handleChange(e)}
+				/>
 			</FormControl>
 		</Box>
 	);

@@ -20,12 +20,19 @@ const StyledCard = styled(Card)({
 	'&:hover': {
 		transform: 'scale(1.1)',
 	},
+	'&:active': {
+		transform: 'scale(2.1)',
+		backgroundColor: 'pink',
+	},
 });
 
-const BasicCard = (props: { accountType: string }) => {
+const BasicCard = (props: {
+	accountType: string;
+	onClick: (selectedAccount: string) => void;
+}) => {
 	return (
 		<StyledCard>
-			<CardActionArea>
+			<CardActionArea onClick={() => props.onClick(props.accountType)}>
 				<CardContent>
 					{props.accountType === 'Savings' ? (
 						<SavingsIcon />

@@ -1,0 +1,27 @@
+const occupations: string[] = [
+	'Accountant',
+	'Administrative Services',
+	'Agriculture',
+	'Attorney',
+	'Business Owner',
+	'Customer Service',
+	'Education',
+	'Engineer',
+	'Financial Services',
+	'Government Official',
+	'Homemaker',
+	'Hospitality',
+	'Medical/Health',
+	'Military',
+	'Public Services',
+	'Real Estate',
+	'Retired',
+	'Sales/Marketing',
+	'Student',
+	'Technology',
+	'Unemployed',
+	'Volunteer Worker',
+	'Other',
+];
+
+export default occupations;
