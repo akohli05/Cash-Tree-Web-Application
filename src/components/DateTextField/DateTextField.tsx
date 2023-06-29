@@ -1,13 +1,11 @@
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateField } from '@mui/x-date-pickers/DateField';
 import { alpha, styled } from '@mui/material/styles';
-import InputLabel from '@mui/material/InputLabel';
+import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import { SelectChangeEvent } from '@mui/material';
 
-const StyledDateField = styled(DateField)(({ theme }) => ({
+const BootstrapInput = styled(InputBase)(({ theme }) => ({
 	'label + &': {
 		marginTop: theme.spacing(3),
 		marginBottom: theme.spacing(0.5),
@@ -20,7 +18,7 @@ const StyledDateField = styled(DateField)(({ theme }) => ({
 		'borderColor': theme.palette.mode === 'light' ? '#E0E3E7' : '#2D3843',
 		'fontSize': 16,
 		'width': 'auto',
-		'padding': '10px 12px',
+		'padding': '10px 57px',
 		'transition': theme.transitions.create([
 			'border-color',
 			'background-color',
@@ -46,7 +44,16 @@ const StyledDateField = styled(DateField)(({ theme }) => ({
 	},
 }));
 
-const BasicDateField = (props: { label: string, value: string, name: string }) => {
+const DateTextField = (props: {
+	label: string;
+	value: string | undefined;
+	name: string;
+	handleChange: (
+		event:
+			| React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+			| SelectChangeEvent<unknown>
+	) => void;
+}) => {
 	return (
 		<Box
 			component='form'
@@ -58,25 +65,23 @@ const BasicDateField = (props: { label: string, value: string, name: string }) =
 			}}
 		>
 			<FormControl variant='standard'>
-				<LocalizationProvider dateAdapter={AdapterDayjs}>
-					<DemoContainer components={['DateField']}>
-						<InputLabel
-							shrink
-							htmlFor='datefield'
-						>
-							{props.label}
-						</InputLabel>
-						<StyledDateField
-							id='datefield'
-							style={{ marginTop: '10px', marginLeft: '0px' }}
-							value={props.value}
-							name={props.name}
-						/>
-					</DemoContainer>
-				</LocalizationProvider>
+				<InputLabel
+					shrink
+					htmlFor='bootstrap-input'
+				>
+					{props.label}
+				</InputLabel>
+				<BootstrapInput
+					id='bootstrap-input'
+					style={{ margin: '25px 0px 0px 0px' }}
+					type='date'
+					value={props.value}
+					name={props.name}
+					onChange={(e) => props.handleChange(e)}
+				/>
 			</FormControl>
 		</Box>
 	);
 };
 
-export default BasicDateField;
+export default DateTextField;

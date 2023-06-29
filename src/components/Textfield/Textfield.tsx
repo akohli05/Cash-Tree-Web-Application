@@ -49,7 +49,9 @@ const TextField = (props: {
 	value: string | undefined;
 	name: string;
 	handleChange: (
-		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<unknown>
+		event:
+			| React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+			| SelectChangeEvent<unknown>
 	) => void;
 }) => {
 	return (

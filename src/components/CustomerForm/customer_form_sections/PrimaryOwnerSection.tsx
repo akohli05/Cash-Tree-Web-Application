@@ -1,11 +1,12 @@
 import TextField from '../../Textfield/Textfield';
 import SelectField from '../../SelectField/SelectField';
-import BasicDateField from '../../BasicDateField/BasicDateField';
+import DateTextField from '../../DateTextField/DateTextField';
 import SocialSecurityField from '../../SocialSecurityField/SocialSecurityField';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
 import occupations from '../../../data/occupations';
 import { useState } from 'react';
 import { SelectChangeEvent } from '@mui/material';
+import { ChangeEvent } from 'react';
 
 interface PrimaryOwner {
 	firstName: string;
@@ -42,7 +43,7 @@ const PrimaryOwnerSection = () => {
 
 	const handleChange = (
 		event:
-			| React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+			| ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
 			| SelectChangeEvent<unknown>
 	) => {
 		event.preventDefault();
@@ -85,10 +86,11 @@ const PrimaryOwnerSection = () => {
 				name='suffix'
 			/>
 			<br />
-			<BasicDateField
+			<DateTextField
 				label='Birth Date'
 				value={primaryOwner.birthDate}
 				name='birthDate'
+				handleChange={handleChange}
 			/>
 			<br />
 			<SocialSecurityField

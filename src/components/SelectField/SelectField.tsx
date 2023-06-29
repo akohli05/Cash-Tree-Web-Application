@@ -67,19 +67,18 @@ const SelectField = (props: {
 				<InputLabel
 					shrink
 					htmlFor='selectfield'
-					style={{ marginLeft: '0px 0px 0px 0px' }}
 				>
 					{props.label}
 				</InputLabel>
 				<StyledSelectField
 					id='selectfield'
-					style={{ marginLeft: '0px' }}
-					value={props.selectedValue || ''}
+					style={{ marginLeft: '0px 0px -10px 0px' }}
+					value={props.selectedValue ?? ''}
 					onChange={(e) => props.handleChange(e)}
 					name={props.name}
 				>
 					{props.value.map((aValue, index) => (
-						<MenuItem key={index}>{aValue}</MenuItem>
+						<MenuItem key={index} value={aValue}>{aValue}</MenuItem>
 					))}
 					;
 				</StyledSelectField>
