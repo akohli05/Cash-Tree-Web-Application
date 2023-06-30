@@ -46,13 +46,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 
 const DateTextField = (props: {
 	label: string;
-	value: string | undefined;
 	name: string;
-	handleChange: (
-		event:
-			| React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-			| SelectChangeEvent<unknown>
-	) => void;
 }) => {
 	return (
 		<Box
@@ -75,9 +69,7 @@ const DateTextField = (props: {
 					id='bootstrap-input'
 					style={{ margin: '25px 0px 0px 0px' }}
 					type='date'
-					value={props.value}
 					name={props.name}
-					onChange={(e) => props.handleChange(e)}
 				/>
 			</FormControl>
 		</Box>

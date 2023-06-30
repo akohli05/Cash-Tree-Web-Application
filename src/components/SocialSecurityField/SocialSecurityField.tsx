@@ -46,13 +46,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 
 const SocialSecurityField = (props: {
 	label: string;
-	value: number;
 	name: string;
-	handleChange: (
-		event:
-			| React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-			| SelectChangeEvent<unknown>
-	) => void;
 }) => {
 	return (
 		<Box
@@ -75,9 +69,7 @@ const SocialSecurityField = (props: {
 					id='bootstrap-input'
 					placeholder='***-**-****'
 					inputProps={{ maxLength: 9 }}
-					value={props.value}
 					name={props.name}
-					onChange={(e) => props.handleChange(e)}
 				/>
 			</FormControl>
 		</Box>

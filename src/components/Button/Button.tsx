@@ -11,6 +11,7 @@ const BasicButton = (props: { textValue: string, onClick: () => void }) => {
 				variant='contained'
 				style={{ marginLeft: 200 }}
 				onClick={props.onClick}
+				type='submit'
 			>
 				{props.textValue}
 			</Button>

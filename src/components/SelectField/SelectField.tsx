@@ -1,11 +1,11 @@
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import { Select, SelectChangeEvent } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box';
 import { alpha, styled } from '@mui/material/styles';
+import { SelectElement } from 'react-hook-form-mui';
 
-const StyledSelectField = styled(Select)(({ theme }) => ({
+const StyledSelectField = styled(SelectElement)(({ theme }) => ({
 	'label + &': {
 		marginTop: theme.spacing(3),
 		marginBottom: theme.spacing(0.5),
@@ -46,11 +46,7 @@ const StyledSelectField = styled(Select)(({ theme }) => ({
 
 const SelectField = (props: {
 	label: string;
-	value: string[];
-	selectedValue: string | undefined;
-	handleChange: (
-		event: React.ChangeEvent<HTMLInputElement> | SelectChangeEvent<unknown>
-	) => void;
+	items: {id: string, label: string}[];
 	name: string;
 }) => {
 	return (
@@ -73,15 +69,9 @@ const SelectField = (props: {
 				<StyledSelectField
 					id='selectfield'
 					style={{ marginLeft: '0px 0px -10px 0px' }}
-					value={props.selectedValue ?? ''}
-					onChange={(e) => props.handleChange(e)}
 					name={props.name}
-				>
-					{props.value.map((aValue, index) => (
-						<MenuItem key={index} value={aValue}>{aValue}</MenuItem>
-					))}
-					;
-				</StyledSelectField>
+					options={[props.items]}
+				></StyledSelectField>
 			</FormControl>
 		</Box>
 	);

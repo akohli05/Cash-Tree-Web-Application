@@ -4,56 +4,45 @@ import DateTextField from '../../DateTextField/DateTextField';
 import SocialSecurityField from '../../SocialSecurityField/SocialSecurityField';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
 import occupations from '../../../data/occupations';
-import { useState } from 'react';
-import { SelectChangeEvent } from '@mui/material';
-import { ChangeEvent } from 'react';
-
-interface PrimaryOwner {
-	firstName: string;
-	middleInitial?: string;
-	lastName: string;
-	suffix?: string;
-	birthDate: string;
-	socialSecurity: number;
-	maidenNameOfMother: string;
-	occupation: string;
-}
 
 const PrimaryOwnerSection = () => {
 	// Suffix select field values
-	const suffixItems: string[] = ['Jr.', 'Sr.', 'II', 'III', 'IV', 'V'];
+	const suffixItems = [
+		{
+			id: '1',
+			label: 'Jr.',
+		},
+		{
+			id: '2',
+			label: 'Sr.',
+		},
+		{
+			id: '3',
+			label: 'II',
+		},
+		{
+			id: '4',
+			label: 'III',
+		},
+		{
+			id: '5',
+			label: 'IV',
+		},
+		{
+			id: '6',
+			label: 'V',
+		},
+	];
 
 	//Occupation select field values
-	const occupationsList: string[] = [];
+	let occupationsList: { id: string; label: string }[] = [];
 	{
-		occupations.map((occupation) => occupationsList.push(occupation));
+		//occupations.map((occupation) => occupationsList.push(occupation));
+		occupationsList = occupations.map((str, index) => ({
+			label: str,
+			id: index + 1 + '1',
+		}));
 	}
-
-	//useState for the primary owner section
-	const [primaryOwner, setPrimaryOwner] = useState<PrimaryOwner>({
-		firstName: '',
-		middleInitial: '',
-		lastName: '',
-		suffix: '',
-		birthDate: '',
-		socialSecurity: 123456789,
-		maidenNameOfMother: '',
-		occupation: '',
-	});
-
-	const handleChange = (
-		event:
-			| ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-			| SelectChangeEvent<unknown>
-	) => {
-		event.preventDefault();
-		setPrimaryOwner({
-			...primaryOwner,
-			[event.target.name]: event.target.value,
-		});
-
-		console.log(primaryOwner);
-	};
 
 	return (
 		<div>
@@ -61,57 +50,41 @@ const PrimaryOwnerSection = () => {
 			<HorizontalDivider />
 			<TextField
 				label='First Name'
-				value={primaryOwner.firstName}
 				name='firstName'
-				handleChange={handleChange}
 			/>
 			<TextField
 				label='Middle Initial (Optional)'
-				value={primaryOwner.middleInitial}
 				name='middleInitial'
-				handleChange={handleChange}
 			/>
 			<br />
 			<TextField
 				label='Last Name'
-				value={primaryOwner.lastName}
 				name='lastName'
-				handleChange={handleChange}
 			/>
 			<SelectField
 				label='Suffix (Optional)'
-				value={suffixItems}
-				selectedValue={primaryOwner.suffix}
-				handleChange={handleChange}
+				items={suffixItems}
 				name='suffix'
 			/>
 			<br />
 			<DateTextField
 				label='Birth Date'
-				value={primaryOwner.birthDate}
 				name='birthDate'
-				handleChange={handleChange}
 			/>
 			<br />
 			<SocialSecurityField
 				label='Social Security'
-				value={primaryOwner.socialSecurity}
 				name='socialSecurity'
-				handleChange={handleChange}
 			/>
 			<br />
 			<TextField
 				label="Mother's Maiden Name"
-				value={primaryOwner.maidenNameOfMother}
 				name='maidenNameOfMother'
-				handleChange={handleChange}
 			/>
 			<br />
 			<SelectField
 				label='Occupation'
-				value={occupationsList}
-				selectedValue={primaryOwner.occupation}
-				handleChange={handleChange}
+				items={occupationsList}
 				name='occupation'
 			/>
 		</div>

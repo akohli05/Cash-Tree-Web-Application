@@ -13,18 +13,19 @@ const HomeAddressSection = () => {
 			<p style={{ margin: '20px 0px 0px -120px' }}>Home Address</p>
 			<HorizontalDivider />
 
-			<TextField label='Address' />
+			<TextField label='Address' name='address'/>
 			<br />
-			<TextField label='Address Line 2 (Optional)' />
+			<TextField label='Address Line 2 (Optional)' name='addressAdditional' />
 			<br />
-			<TextField label='City' />
+			<TextField label='City' name='city'/>
 			<br />
 			<SelectField
 				label='State'
-				value={statesList}
+				items={statesList}
+				name='state'
 			/>
 			<br />
-			<TextField label='Zipcode' />
+			<TextField label='Zipcode' name='zipcode'/>
 		</div>
 	);
 };

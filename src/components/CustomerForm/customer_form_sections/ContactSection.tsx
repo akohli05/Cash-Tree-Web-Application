@@ -6,10 +6,10 @@ const ContactSection = () => {
 			<p style={{ margin: '20px 0px 0px -120px' }}>Contact Information</p>
 			<HorizontalDivider />
 
-			<TextField label='Email' />
-			<TextField label='Personal Phone' /> <br />
-			<TextField label='Work Phone (Optional)' />
-			<TextField label='Ext' />
+			<TextField label='Email' name='email' />
+			<TextField label='Personal Phone' name='personalPhone'/> <br />
+			<TextField label='Work Phone (Optional)' name='workPhone'/>
+			<TextField label='Ext' name='phoneExtension'/>
 		</div>
 	);
 };

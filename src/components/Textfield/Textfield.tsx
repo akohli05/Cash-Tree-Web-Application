@@ -1,11 +1,10 @@
 import { alpha, styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import { SelectChangeEvent } from '@mui/material';
+import { TextFieldElement } from 'react-hook-form-mui';
 
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
+const BootstrapInput = styled(TextFieldElement)(({ theme }) => ({
 	'label + &': {
 		marginTop: theme.spacing(3),
 		marginBottom: theme.spacing(0.5),
@@ -46,13 +45,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 
 const TextField = (props: {
 	label: string;
-	value: string | undefined;
 	name: string;
-	handleChange: (
-		event:
-			| React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-			| SelectChangeEvent<unknown>
-	) => void;
 }) => {
 	return (
 		<Box
@@ -73,9 +66,7 @@ const TextField = (props: {
 				</InputLabel>
 				<BootstrapInput
 					id='bootstrap-input'
-					value={props.value}
 					name={props.name}
-					onChange={(e) => props.handleChange(e)}
 				/>
 			</FormControl>
 		</Box>

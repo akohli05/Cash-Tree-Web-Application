@@ -2,7 +2,7 @@ import BasicCard from '../BasicCard/BasicCard';
 import BasicButton from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
 import BreadcrumbsBar from '../BreadcrumbsBar/BreadcrumbsBar';
-
+import { FormContainer, useForm } from 'react-hook-form-mui';
 
 const AccountSelection = () => {
 	let accountTypeSelected: string = '';
@@ -15,13 +15,23 @@ const AccountSelection = () => {
 	};
 
 	const printSelectedValue = (selectedAccount: string) => {
-		console.log(selectedAccount);
 		accountTypeSelected = selectedAccount;
-		console.log(accountTypeSelected + '1');
 	};
 
+	//Form and context set up
+	const accountFormContext = useForm<{
+		accountType: string;
+	}>({
+		defaultValues: {
+			accountType: accountTypeSelected,
+		},
+	});
+
 	return (
-		<>
+		<FormContainer
+			formContext={accountFormContext}
+			onSuccess={(data) => console.log(data)}
+		>
 			<BreadcrumbsBar currentStep={1} />
 
 			<p style={{ margin: '30px 30px 30px 80px' }}>Select an Account</p>
@@ -54,7 +64,7 @@ const AccountSelection = () => {
 				textValue='Next'
 				onClick={navigateToCustomerForm}
 			/>
-		</>
+		</FormContainer>
 	);
 };
 

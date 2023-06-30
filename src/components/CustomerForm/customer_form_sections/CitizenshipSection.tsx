@@ -15,7 +15,8 @@ const CitizenshipSection = () => {
 			
 			<SelectField
 				label='Country of Citizenship'
-				value={countriesList}
+				name='citizenship'
+				items={countriesList}
 			/>
 		</div>
 	);

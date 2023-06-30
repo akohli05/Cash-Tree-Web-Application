@@ -44,7 +44,7 @@ const BasicCard = (props: {
 						<SpendingIcon />
 					)}
 
-					<Typography component='div'>{props.accountType}</Typography>
+					<Typography component='p'>{props.accountType}</Typography>
 				</CardContent>
 			</CardActionArea>
 		</StyledCard>

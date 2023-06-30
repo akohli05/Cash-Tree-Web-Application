@@ -7,16 +7,6 @@ import FormLabel from '@mui/material/FormLabel';
 import { Radio } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import RadioGroup from '@mui/material/RadioGroup';
-import { ChangeEvent } from 'react';
-import { SelectChangeEvent } from '@mui/material';
-
-interface MailingAddress {
-	address: string;
-	addressAdditional?: string;
-	city: string;
-	state: string;
-	zipCode: string;
-}
 
 const MailingAddressSection = () => {
 	const [selectedValue, setRadioValue] = useState('Yes');
@@ -29,29 +19,6 @@ const MailingAddressSection = () => {
 	{
 		states.map((state) => statesList.push(state.abbreviation));
 	}
-
-	//useState for the mailing address section
-	const [mailingAddress, setMailingAddress] = useState<MailingAddress>({
-		address: '',
-		addressAdditional: '',
-		city: '',
-		state: '',
-		zipCode: '',
-	});
-
-	const handleChange = (
-		event:
-			| ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-			| SelectChangeEvent<unknown>
-	) => {
-		event.preventDefault();
-		setMailingAddress({
-			...mailingAddress,
-			[event.target.name]: event.target.value,
-		});
-
-		console.log(mailingAddress);
-	};
 
 	return (
 		<div>
@@ -89,38 +56,28 @@ const MailingAddressSection = () => {
 					<br />
 					<TextField
 						label='Address'
-						value={mailingAddress.address}
-						name='address'
-						handleChange={handleChange}
+						name='addressMailing'
 					/>
 					<br />
 					<TextField
 						label='Address Line 2 (Optional)'
-						value={mailingAddress.addressAdditional}
-						name='addressAdditional'
-						handleChange={handleChange}
+						name='addressAdditionalMailing'
 					/>
 					<br />
 					<TextField
 						label='City'
-						value={mailingAddress.city}
-						name='city'
-						handleChange={handleChange}
+						name='cityMailing'
 					/>
 					<br />
 					<SelectField
 						label='State'
-						value={statesList}
-						selectedValue={mailingAddress.state}
-						name='state'
-						handleChange={handleChange}
+						items={statesList}
+						name='stateMailing'
 					/>
 					<br />
 					<TextField
 						label='Zipcode'
-						value={mailingAddress.zipCode}
-						name='zipCode'
-						handleChange={handleChange}
+						name='zipcodeMailing'
 					/>
 				</>
 			)}
