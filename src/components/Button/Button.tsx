@@ -1,21 +1,25 @@
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import { Button, styled } from '@mui/material';
 
-const BasicButton = (props: { textValue: string, onClick: () => void }) => {
+interface BasicButtonProps {
+	text: string;
+}
+
+const StyledButton = styled(Button)({
+	'marginTop': '10px',
+	'display': 'block',
+	'@media (max-width: 600px)': {
+		width: '70%',
+	},
+});
+
+const BasicButton: React.FC<BasicButtonProps> = ({ text }) => {
 	return (
-		<Stack
-			spacing={2}
-			direction='row'
+		<StyledButton
+			variant='contained'
+			type='submit'
 		>
-			<Button
-				variant='contained'
-				style={{ marginLeft: 200 }}
-				onClick={props.onClick}
-				type='submit'
-			>
-				{props.textValue}
-			</Button>
-		</Stack>
+			{text}
+		</StyledButton>
 	);
 };
 

@@ -1,30 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import AccountSelection from '../components/AccountSelection/AccountSelection';
-import Header from '../components/Header/Header';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import CustomerScreen from './CustomerScreen';
-import SummaryScreen from './SummaryScreen';
+import AccountSelectionForm from '../components/AccountSelectionForm/AccountSelectionForm';
+import BreadcrumbsBar from '../components/BreadcrumbsBar/BreadcrumbsBar';
 
-const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <AccountSelection />,
-	},
-	{
-		path: '/customer-form',
-		element: <CustomerScreen />,
-	},
-	{
-		path: '/summary',
-		element: <SummaryScreen />,
-	},
-]);
+const AccountSelectionScreen = () => {
+	return (
+		<>
+			<BreadcrumbsBar currentStep={1} />
+			<AccountSelectionForm />
+		</>
+	);
+};
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-	<React.StrictMode>
-		<Header />
-
-		<RouterProvider router={router} />
-	</React.StrictMode>
-);
+export default AccountSelectionScreen;

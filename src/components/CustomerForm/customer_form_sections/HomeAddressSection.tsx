@@ -4,13 +4,10 @@ import states from '../../../data/states';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
 
 const HomeAddressSection = () => {
-	const statesList: string[] = [];
-	{
-		states.map((state) => statesList.push(state.abbreviation));
-	}
+	
 	return (
 		<div>
-			<p style={{ margin: '20px 0px 0px -120px' }}>Home Address</p>
+			<h5>Home Address</h5>
 			<HorizontalDivider />
 
 			<TextField label='Address' name='address'/>
@@ -21,7 +18,7 @@ const HomeAddressSection = () => {
 			<br />
 			<SelectField
 				label='State'
-				items={statesList}
+				items={states}
 				name='state'
 			/>
 			<br />

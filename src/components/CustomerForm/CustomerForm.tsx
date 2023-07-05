@@ -6,70 +6,61 @@ import HomeAddressSection from './customer_form_sections/HomeAddressSection';
 import MailingAddressSection from './customer_form_sections/MailingAddressSection';
 import { useNavigate } from 'react-router-dom';
 import { FormContainer, useForm } from 'react-hook-form-mui';
+import styled from '@emotion/styled';
+import ApplicationContext, {
+	Application,
+	Customer,
+} from '../../context/ApplicationContext';
+import { useContext } from 'react';
+import Box from '@mui/material/Box';
+
+const StyledBox = styled(Box)({
+	'display': 'flex',
+	'justifyContent': 'center',
+	'@media (max-width: 600px)': {
+		flexDirection: 'column',
+		marginLeft: 100,
+		width: 300,
+	},
+});
 
 const CustomerForm = () => {
 	const navigate = useNavigate();
+	const application = useContext(ApplicationContext);
 
-	const navigateToSummary = () => {
-		// 👇️ navigate to /summary
+	//Form and context set up
+	const formContext = useForm<Customer>({});
+
+	const { handleSubmit } = formContext;
+
+	const onSubmit = (data: Customer) => {
+		//bulding the application type
+		const application: Partial<Application> = {
+			customer: data,
+		};
+		//import useContext save the new object here
+
+		//navigate to /summary
 		navigate('/summary');
 	};
 
-	//Form and context set up
-	const formContext = useForm<{
-		firstName: string;
-		middleInitial?: string;
-		lastName: string;
-		suffix?: string;
-		birthDate: string;
-		socialSecurity: number;
-		maidenNameOfMother: string;
-		occupation: string;
-		citizenship: string;
-		email: string;
-		personalPhone: string;
-		workPhone?: string;
-		phoneExtension: string;
-		address: string;
-		addressAdditional: string;
-		city: string;
-		state: string;
-		zipcode: string;
-		addressMailing: string;
-		addressAdditionalMailing: string;
-		cityMailing: string;
-		stateMailing: string;
-		zipcodeMailing: string;
-	}>({
-		defaultValues: {
-			firstName: '',
-		},
-	});
-
 	return (
-		<FormContainer
-			formContext={formContext}
-			onSuccess={(data) => console.log(data)}
-		>
-			<p style={{ margin: '30px 30px 30px 80px' }}>Your Information</p>
-
-			<div
-				style={{
-					marginLeft: 200,
-				}}
+		<StyledBox>
+			<FormContainer
+				formContext={formContext}
+				handleSubmit={handleSubmit((data) => onSubmit(data))}
 			>
+				<h4>Your Information</h4>
+
 				<PrimaryOwnerSection />
 				<CitizenshipSection />
 				<ContactSection />
 				<HomeAddressSection />
 				<MailingAddressSection />
 
-				<BasicButton
-					textValue='Next'
-					onClick={navigateToSummary}
-				/>
-			</div>
-		</FormContainer>
+				<BasicButton text='Next' />
+			</FormContainer>
+		</StyledBox>
 	);
 };
 

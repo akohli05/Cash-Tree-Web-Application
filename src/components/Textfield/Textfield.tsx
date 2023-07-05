@@ -43,33 +43,32 @@ const BootstrapInput = styled(TextFieldElement)(({ theme }) => ({
 	},
 }));
 
-const TextField = (props: {
+const StyledBox = styled(Box)({
+	display: 'inline-block',
+	marginRight: '150px',
+	marginTop: '10px',
+});
+
+interface TextFieldProps {
 	label: string;
 	name: string;
-}) => {
+}
+const TextField: React.FC<TextFieldProps> = ({ label, name }) => {
 	return (
-		<Box
-			component='form'
-			noValidate
-			sx={{
-				display: 'inline-block',
-				marginRight: '150px',
-				marginTop: '10px',
-			}}
-		>
+		<StyledBox component='form'>
 			<FormControl variant='standard'>
 				<InputLabel
 					shrink
 					htmlFor='bootstrap-input'
 				>
-					{props.label}
+					{label}
 				</InputLabel>
 				<BootstrapInput
 					id='bootstrap-input'
-					name={props.name}
+					name={name}
 				/>
 			</FormControl>
-		</Box>
+		</StyledBox>
 	);
 };
 

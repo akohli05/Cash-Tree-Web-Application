@@ -1,6 +1,5 @@
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box';
 import { alpha, styled } from '@mui/material/styles';
 import { SelectElement } from 'react-hook-form-mui';
@@ -17,8 +16,8 @@ const StyledSelectField = styled(SelectElement)(({ theme }) => ({
 		'border': '1px solid',
 		'borderColor': theme.palette.mode === 'light' ? '#E0E3E7' : '#2D3843',
 		'fontSize': 16,
-		'width': 'auto',
-		'padding': '10px 210px',
+		'width': '200px',
+		'padding': '10px 10px',
 		'transition': theme.transitions.create([
 			'border-color',
 			'background-color',
@@ -44,36 +43,36 @@ const StyledSelectField = styled(SelectElement)(({ theme }) => ({
 	},
 }));
 
-const SelectField = (props: {
+const StyledBox = styled(Box)({
+	display: 'inline-block',
+	marginRight: '150px',
+	marginTop: '10px',
+});
+
+interface SelectFieldProps {
 	label: string;
-	items: {id: string, label: string}[];
+	items: { id: string; label: string }[];
 	name: string;
-}) => {
+}
+
+const SelectField: React.FC<SelectFieldProps> = ({ label, items, name }) => {
 	return (
-		<Box
-			component='form'
-			noValidate
-			sx={{
-				display: 'inline-block',
-				marginRight: '150px',
-				marginTop: '10px',
-			}}
-		>
-			<FormControl style={{ width: '300' }}>
+		<StyledBox>
+			<FormControl>
 				<InputLabel
 					shrink
 					htmlFor='selectfield'
 				>
-					{props.label}
+					{label}
 				</InputLabel>
 				<StyledSelectField
 					id='selectfield'
 					style={{ marginLeft: '0px 0px -10px 0px' }}
-					name={props.name}
-					options={[props.items]}
-				></StyledSelectField>
+					name={name}
+					options={items}
+				/>
 			</FormControl>
-		</Box>
+		</StyledBox>
 	);
 };
 

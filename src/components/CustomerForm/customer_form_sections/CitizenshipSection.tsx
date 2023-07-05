@@ -1,22 +1,18 @@
 import SelectField from '../../SelectField/SelectField';
 import countries from '../../../data/countries';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
+import { SectionHeading } from './HomeAddressSection';
 
 const CitizenshipSection = () => {
-	const countriesList: string[] = [];
-	{
-		countries.map((country) => countriesList.push(country.name));
-	}
-
 	return (
 		<div>
-			<p style={{ margin: '20px 0px 0px -120px' }}>Citizenship Status</p>
+			<h5>Citizenship Status</h5>
 			<HorizontalDivider />
-			
+
 			<SelectField
 				label='Country of Citizenship'
 				name='citizenship'
-				items={countriesList}
+				items={countries}
 			/>
 		</div>
 	);

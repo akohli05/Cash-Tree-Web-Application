@@ -3,9 +3,9 @@ import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import { SelectChangeEvent } from '@mui/material';
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
+	'margin': '25px 0px 0px 0px',
 	'label + &': {
 		marginTop: theme.spacing(3),
 		marginBottom: theme.spacing(0.5),
@@ -44,35 +44,34 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 	},
 }));
 
-const DateTextField = (props: {
+const StyledBox = styled(Box)({
+	display: 'inline-block',
+	marginRight: '150px',
+	marginTop: '10px',
+});
+
+interface DateFieldProps {
 	label: string;
 	name: string;
-}) => {
+}
+
+const DateTextField: React.FC<DateFieldProps> = ({ label, name }) => {
 	return (
-		<Box
-			component='form'
-			noValidate
-			sx={{
-				display: 'inline-block',
-				marginRight: '150px',
-				marginTop: '10px',
-			}}
-		>
+		<StyledBox component='form'>
 			<FormControl variant='standard'>
 				<InputLabel
 					shrink
 					htmlFor='bootstrap-input'
 				>
-					{props.label}
+					{label}
 				</InputLabel>
 				<BootstrapInput
 					id='bootstrap-input'
-					style={{ margin: '25px 0px 0px 0px' }}
 					type='date'
-					name={props.name}
+					name={name}
 				/>
 			</FormControl>
-		</Box>
+		</StyledBox>
 	);
 };
 

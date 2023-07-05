@@ -3,7 +3,6 @@ import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import { SelectChangeEvent } from '@mui/material';
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
 	'label + &': {
@@ -44,35 +43,38 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 	},
 }));
 
-const SocialSecurityField = (props: {
+const StyledBox = styled(Box)({
+	display: 'inline-block',
+	marginRight: '150px',
+	marginTop: '10px',
+});
+
+interface SocialSecurityFieldProps {
 	label: string;
 	name: string;
+}
+
+const SocialSecurityField: React.FC<SocialSecurityFieldProps> = ({
+	label,
+	name,
 }) => {
 	return (
-		<Box
-			component='form'
-			noValidate
-			sx={{
-				display: 'inline-block',
-				marginRight: '150px',
-				marginTop: '10px',
-			}}
-		>
+		<StyledBox component='form'>
 			<FormControl variant='standard'>
 				<InputLabel
 					shrink
 					htmlFor='bootstrap-input'
 				>
-					{props.label}
+					{label}
 				</InputLabel>
 				<BootstrapInput
 					id='bootstrap-input'
 					placeholder='***-**-****'
 					inputProps={{ maxLength: 9 }}
-					name={props.name}
+					name={name}
 				/>
 			</FormControl>
-		</Box>
+		</StyledBox>
 	);
 };
 

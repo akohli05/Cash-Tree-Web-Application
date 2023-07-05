@@ -1,4 +1,4 @@
-import BreadcrumbsBar from '../components/BreadcrumbsBar/BreadcrumbsBar';
+import BreadcrumbsBar from "../components/BreadcrumbsBar/BreadcrumbsBar";
 
 const SummaryScreen = () => {
 	return (

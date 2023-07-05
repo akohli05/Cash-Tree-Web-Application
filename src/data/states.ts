@@ -1,239 +1,239 @@
 const states = [
 	{
 		label: 'Alabama',
-		abbreviation: 'AL',
+		id: 'AL',
 	},
 	{
 		label: 'Alaska',
-		abbreviation: 'AK',
+		id: 'AK',
 	},
 	{
 		label: 'American Samoa',
-		abbreviation: 'AS',
+		id: 'AS',
 	},
 	{
 		label: 'Arizona',
-		abbreviation: 'AZ',
+		id: 'AZ',
 	},
 	{
 		label: 'Arkansas',
-		abbreviation: 'AR',
+		id: 'AR',
 	},
 	{
 		label: 'California',
-		abbreviation: 'CA',
+		id: 'CA',
 	},
 	{
 		label: 'Colorado',
-		abbreviation: 'CO',
+		id: 'CO',
 	},
 	{
 		label: 'Connecticut',
-		abbreviation: 'CT',
+		id: 'CT',
 	},
 	{
 		label: 'Delaware',
-		abbreviation: 'DE',
+		id: 'DE',
 	},
 	{
 		label: 'District Of Columbia',
-		abbreviation: 'DC',
+		id: 'DC',
 	},
 	{
 		label: 'Federated States Of Micronesia',
-		abbreviation: 'FM',
+		id: 'FM',
 	},
 	{
 		label: 'Florida',
-		abbreviation: 'FL',
+		id: 'FL',
 	},
 	{
 		label: 'Georgia',
-		abbreviation: 'GA',
+		id: 'GA',
 	},
 	{
 		label: 'Guam',
-		abbreviation: 'GU',
+		id: 'GU',
 	},
 	{
 		label: 'Hawaii',
-		abbreviation: 'HI',
+		id: 'HI',
 	},
 	{
 		label: 'Idaho',
-		abbreviation: 'ID',
+		id: 'ID',
 	},
 	{
 		label: 'Illinois',
-		abbreviation: 'IL',
+		id: 'IL',
 	},
 	{
 		label: 'Indiana',
-		abbreviation: 'IN',
+		id: 'IN',
 	},
 	{
 		label: 'Iowa',
-		abbreviation: 'IA',
+		id: 'IA',
 	},
 	{
 		label: 'Kansas',
-		abbreviation: 'KS',
+		id: 'KS',
 	},
 	{
 		label: 'Kentucky',
-		abbreviation: 'KY',
+		id: 'KY',
 	},
 	{
 		label: 'Louisiana',
-		abbreviation: 'LA',
+		id: 'LA',
 	},
 	{
 		label: 'Maine',
-		abbreviation: 'ME',
+		id: 'ME',
 	},
 	{
 		label: 'Marshall Islands',
-		abbreviation: 'MH',
+		id: 'MH',
 	},
 	{
 		label: 'Maryland',
-		abbreviation: 'MD',
+		id: 'MD',
 	},
 	{
 		label: 'Massachusetts',
-		abbreviation: 'MA',
+		id: 'MA',
 	},
 	{
 		label: 'Michigan',
-		abbreviation: 'MI',
+		id: 'MI',
 	},
 	{
 		label: 'Minnesota',
-		abbreviation: 'MN',
+		id: 'MN',
 	},
 	{
 		label: 'Mississippi',
-		abbreviation: 'MS',
+		id: 'MS',
 	},
 	{
 		label: 'Missouri',
-		abbreviation: 'MO',
+		id: 'MO',
 	},
 	{
 		label: 'Montana',
-		abbreviation: 'MT',
+		id: 'MT',
 	},
 	{
 		label: 'Nebraska',
-		abbreviation: 'NE',
+		id: 'NE',
 	},
 	{
 		label: 'Nevada',
-		abbreviation: 'NV',
+		id: 'NV',
 	},
 	{
 		label: 'New Hampshire',
-		abbreviation: 'NH',
+		id: 'NH',
 	},
 	{
 		label: 'New Jersey',
-		abbreviation: 'NJ',
+		id: 'NJ',
 	},
 	{
 		label: 'New Mexico',
-		abbreviation: 'NM',
+		id: 'NM',
 	},
 	{
 		label: 'New York',
-		abbreviation: 'NY',
+		id: 'NY',
 	},
 	{
 		label: 'North Carolina',
-		abbreviation: 'NC',
+		id: 'NC',
 	},
 	{
 		label: 'North Dakota',
-		abbreviation: 'ND',
+		id: 'ND',
 	},
 	{
 		label: 'Northern Mariana Islands',
-		abbreviation: 'MP',
+		id: 'MP',
 	},
 	{
 		label: 'Ohio',
-		abbreviation: 'OH',
+		id: 'OH',
 	},
 	{
 		label: 'Oklahoma',
-		abbreviation: 'OK',
+		id: 'OK',
 	},
 	{
 		label: 'Oregon',
-		abbreviation: 'OR',
+		id: 'OR',
 	},
 	{
 		label: 'Palau',
-		abbreviation: 'PW',
+		id: 'PW',
 	},
 	{
 		label: 'Pennsylvania',
-		abbreviation: 'PA',
+		id: 'PA',
 	},
 	{
 		label: 'Puerto Rico',
-		abbreviation: 'PR',
+		id: 'PR',
 	},
 	{
 		label: 'Rhode Island',
-		abbreviation: 'RI',
+		id: 'RI',
 	},
 	{
 		label: 'South Carolina',
-		abbreviation: 'SC',
+		id: 'SC',
 	},
 	{
 		label: 'South Dakota',
-		abbreviation: 'SD',
+		id: 'SD',
 	},
 	{
 		label: 'Tennessee',
-		abbreviation: 'TN',
+		id: 'TN',
 	},
 	{
 		label: 'Texas',
-		abbreviation: 'TX',
+		id: 'TX',
 	},
 	{
 		label: 'Utah',
-		abbreviation: 'UT',
+		id: 'UT',
 	},
 	{
 		label: 'Vermont',
-		abbreviation: 'VT',
+		id: 'VT',
 	},
 	{
 		label: 'Virgin Islands',
-		abbreviation: 'VI',
+		id: 'VI',
 	},
 	{
 		label: 'Virginia',
-		abbreviation: 'VA',
+		id: 'VA',
 	},
 	{
 		label: 'Washington',
-		abbreviation: 'WA',
+		id: 'WA',
 	},
 	{
 		label: 'West Virginia',
-		abbreviation: 'WV',
+		id: 'WV',
 	},
 	{
 		label: 'Wisconsin',
-		abbreviation: 'WI',
+		id: 'WI',
 	},
 	{
 		label: 'Wyoming',
-		abbreviation: 'WY',
+		id: 'WY',
 	},
 ];
 

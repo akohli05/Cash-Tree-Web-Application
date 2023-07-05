@@ -2,11 +2,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import styled from '@emotion/styled';
-import SavingsIcon from '../AccountSelection/account_type_icons/SavingsIcon';
-import MoneyMarketIcon from '../AccountSelection/account_type_icons/MoneyMarketIcon';
-import CDIcon from '../AccountSelection/account_type_icons/CDIcon';
-import SpendingIcon from '../AccountSelection/account_type_icons/SpendingIcon';
+import SavingsIcon from '../AccountSelectionForm/account_type_icons/SavingsIcon';
+import MoneyMarketIcon from '../AccountSelectionForm/account_type_icons/MoneyMarketIcon';
+import CDIcon from '../AccountSelectionForm/account_type_icons/CDIcon';
+import SpendingIcon from '../AccountSelectionForm/account_type_icons/SpendingIcon';
 import { CardActionArea } from '@mui/material';
+import { AccountType } from '../../context/ApplicationContext';
 
 const StyledCard = styled(Card)({
 	'backgroundColor': '#f0f0f0',
@@ -14,37 +15,49 @@ const StyledCard = styled(Card)({
 	'width': 130,
 	'height': 130,
 	'color': 'black',
-	'margin': '0px 15px 30px 0px',
+	'margin': '1px',
 	'borderBottom': 'ridge rgba(211, 220, 50, .6)',
 	'textAlign': 'center',
 	'&:hover': {
 		transform: 'scale(1.1)',
 	},
-	'&:active': {
-		transform: 'scale(2.1)',
-		backgroundColor: 'pink',
+	'@media (max-width: 600px)': {
+		width: 80,
+		height: 80,
 	},
 });
 
-const BasicCard = (props: {
-	accountType: string;
-	onClick: (selectedAccount: string) => void;
-}) => {
+const StyledTopography = styled(Typography)({
+	'@media (max-width: 600px)': {
+		fontSize: 10,
+	},
+});
+
+interface BasicCardProps {
+	accountType: AccountType;
+}
+
+const BasicCard: React.FC<BasicCardProps> = ({ accountType }) => {
+	//Choose the icon image
+	function accountTypeIcon() {
+		switch (accountType) {
+			case 'Savings':
+				return <SavingsIcon />;
+			case 'Money Market':
+				return <MoneyMarketIcon />;
+			case 'Certificate of Deposit':
+				return <CDIcon />;
+			case 'Spending':
+				return <SpendingIcon />;
+		}
+	}
+
 	return (
 		<StyledCard>
-			<CardActionArea onClick={() => props.onClick(props.accountType)}>
+			<CardActionArea>
 				<CardContent>
-					{props.accountType === 'Savings' ? (
-						<SavingsIcon />
-					) : props.accountType === 'Money Market' ? (
-						<MoneyMarketIcon />
-					) : props.accountType === 'Certificate of Deposit' ? (
-						<CDIcon />
-					) : (
-						<SpendingIcon />
-					)}
-
-					<Typography component='p'>{props.accountType}</Typography>
+					{accountTypeIcon()}
+					<StyledTopography>{accountType}</StyledTopography>
 				</CardContent>
 			</CardActionArea>
 		</StyledCard>

@@ -2,54 +2,39 @@ import TextField from '../../Textfield/Textfield';
 import SelectField from '../../SelectField/SelectField';
 import states from '../../../data/states';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
+import { RadioButtonGroup } from 'react-hook-form-mui';
 import { useState } from 'react';
-import FormLabel from '@mui/material/FormLabel';
-import { Radio } from '@mui/material';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import RadioGroup from '@mui/material/RadioGroup';
 
 const MailingAddressSection = () => {
-	const [selectedValue, setRadioValue] = useState('Yes');
+	const [selectedRadio, setSelectedRadio] = useState('Yes');
 
-	const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setRadioValue((event.target as HTMLInputElement).value);
+	const handleChange = (value:string) => {
+		setSelectedRadio(value);
 	};
 
-	const statesList: string[] = [];
-	{
-		states.map((state) => statesList.push(state.abbreviation));
-	}
 
 	return (
 		<div>
-			<p style={{ margin: '20px 0px 0px -120px' }}>Mailing Address</p>
+			<h5>Mailing Address</h5>
 			<HorizontalDivider />
 
-			<FormLabel id='demo-row-radio-buttons-group-label'>
-				Is your mailing address the same as your home address?
-			</FormLabel>
-
-			<RadioGroup
+			<RadioButtonGroup
 				row
-				aria-labelledby='demo-row-radio-buttons-group-label'
-				name='row-radio-buttons-group'
-				value={selectedValue}
-				onChange={handleRadioChange}
-				style={{ display: 'inline-block' }}
-			>
-				<FormControlLabel
-					value='Yes'
-					control={<Radio size='small' />}
-					label='Yes'
-					checked={selectedValue === 'Yes'}
-				/>
-				<FormControlLabel
-					value='No'
-					control={<Radio size='small' />}
-					label='No'
-				/>
-			</RadioGroup>
-			{selectedValue === 'Yes' ? (
+				label='Is your mailing address the same as your home address?'
+				name='mailingRadioButtonGroup'
+				options={[
+					{
+						id: 'Yes',
+						label: 'Yes',
+					},
+					{
+						id: 'No',
+						label: 'No',
+					},
+				]}
+				onChange={(data) => handleChange(data)}
+			></RadioButtonGroup>
+			{selectedRadio === 'Yes' ? (
 				''
 			) : (
 				<>
@@ -71,7 +56,7 @@ const MailingAddressSection = () => {
 					<br />
 					<SelectField
 						label='State'
-						items={statesList}
+						items={states}
 						name='stateMailing'
 					/>
 					<br />

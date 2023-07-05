@@ -46,7 +46,7 @@ const PrimaryOwnerSection = () => {
 
 	return (
 		<div>
-			<p style={{ margin: '0px 0px 0px -120px' }}>Primary Owner</p>
+			<h5>Primary Owner</h5>
 			<HorizontalDivider />
 			<TextField
 				label='First Name'
