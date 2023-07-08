@@ -12,7 +12,7 @@ export interface Customer {
 	lastName: string;
 	suffix?: string;
 	birthDate: string;
-	socialSecurity: number;
+	socialSecurity: string;
 	maidenNameOfMother: string;
 	occupation: string;
 	citizenship: string;
@@ -34,19 +34,19 @@ export interface Customer {
 }
 
 export interface Application {
-	accountType: AccountType[];
+	accountTypes: AccountType[];
 	customer: Customer;
 }
 
 export interface ApplicationContextModel {
 	state: Application;
-	updateAccountType: (accountType: AccountType[]) => void;
+	updateAccountTypes: (accountTypes: AccountType[]) => void;
 	updateCustomer: (customer: Customer) => void;
 }
 
-const ApplicationContext = createContext<ApplicationContextModel>({
+export const ApplicationContext = createContext<ApplicationContextModel>({
 	state: {} as Application,
-	updateAccountType: () => {},
+	updateAccountTypes: () => {},
 	updateCustomer: () => {},
 });
 
@@ -55,10 +55,10 @@ const ApplicationProvider = ({ children }: { children: React.ReactNode }) => {
 		{} as Application
 	);
 
-	const updateAccountType = (updatedAccountType: AccountType[]) => {
+	const updateAccountTypes = (updatedAccountTypes: AccountType[]) => {
 		const newApplicationObject: Application = {
 			...application,
-			...{ accountType: updatedAccountType },
+			...updatedAccountTypes,
 		};
 		setApplication(newApplicationObject);
 	};
@@ -73,7 +73,7 @@ const ApplicationProvider = ({ children }: { children: React.ReactNode }) => {
 
 	const value = {
 		state: application,
-		updateAccountType: updateAccountType,
+		updateAccountTypes: updateAccountTypes,
 		updateCustomer: updateCustomer,
 	};
 

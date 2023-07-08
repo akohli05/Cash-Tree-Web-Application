@@ -4,12 +4,9 @@ import LocalAtmOutlinedIcon from '@mui/icons-material/LocalAtmOutlined';
 import StyledCircle from './StyledCircle';
 
 const StyleMoneyMarketIcon = styled(LocalAtmOutlinedIcon)({
-	'outlineWidth': 1,
-	'backgroundColor': '#6fa125',
-	'fontSize': 48,
-	'@media (max-width: 600px)': {
-		fontSize: 20,
-	},
+	outlineWidth: 1,
+	backgroundColor: '#6fa125',
+	fontSize: 48,
 });
 
 const MoneyMarketIcon = () => {

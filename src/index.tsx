@@ -10,6 +10,7 @@ import {
 import CustomerScreen from './screens/CustomerScreen';
 import SummaryScreen from './screens/SummaryScreen';
 import ApplicationProvider from './context/ApplicationContext';
+import ConfirmationScreen from './screens/ConfirmationScreen';
 
 const router = createBrowserRouter([
 	{
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
 	{
 		path: '/summary',
 		element: <SummaryScreen />,
+	},
+	{
+		path: '/confirmation',
+		element: <ConfirmationScreen />,
 	},
 ]);
 

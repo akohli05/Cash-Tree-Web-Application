@@ -1,11 +1,17 @@
 import SelectField from '../../SelectField/SelectField';
 import countries from '../../../data/countries';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
-import { SectionHeading } from './HomeAddressSection';
+import { styled } from '@mui/material/styles';
+
+const StyledDiv = styled('div')(({ theme }) => ({
+	[theme.breakpoints.down('sm')]: {
+		width: '60%',
+	},
+}));
 
 const CitizenshipSection = () => {
 	return (
-		<div>
+		<StyledDiv>
 			<h5>Citizenship Status</h5>
 			<HorizontalDivider />
 
@@ -14,7 +20,7 @@ const CitizenshipSection = () => {
 				name='citizenship'
 				items={countries}
 			/>
-		</div>
+		</StyledDiv>
 	);
 };
 

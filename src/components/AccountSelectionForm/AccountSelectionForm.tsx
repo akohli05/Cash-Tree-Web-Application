@@ -1,44 +1,39 @@
 import { useNavigate } from 'react-router-dom';
 import { FormContainer, useForm } from 'react-hook-form-mui';
-import styled from '@emotion/styled';
+import { styled } from '@mui/material/styles';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import { Box } from '@mui/material';
 import BasicButton from '../Button/Button';
 import BasicCard from '../BasicCard/BasicCard';
-import { AccountType, Application, ApplicationContextModel } from '../../context/ApplicationContext';
+import {
+	AccountType,
+	ApplicationContext,
+} from '../../context/ApplicationContext';
 import { useContext } from 'react';
 
-const StyledBox = styled(Box)({
-	'display': 'flex',
-	'justifyContent': 'center',
-	'@media (max-width: 600px)': {
-		flexDirection: 'column',
-		marginLeft: 100,
-		width: 300,
+const StyledBox = styled(Box)(({ theme }) => ({
+	display: 'flex',
+	justifyContent: 'center',
+
+	[theme.breakpoints.down('md')]: {
+		margin: 'auto',
+		padding: 30,
 	},
-});
+}));
 
 const AccountSelectionForm = () => {
 	const navigate = useNavigate();
+	//import useContext save the new object here
+	const applicationContext = useContext(ApplicationContext);
 
 	//Form and context set up
 	const accountFormContext = useForm<AccountType[]>({});
 
 	const { handleSubmit } = accountFormContext;
 
-	const onSubmit = (data: AccountType[]) => {
-		//bulding the application type
-		const application: Partial<Application> = {
-			accountType: data,
-		};
-
-		const applicationContextModel: ApplicationContextModel = {
-			state: application,
-			
-		}
-
-		//import useContext save the new object here
-		const applicationContext = useContext(ApplicationContextModel);
+	//Handles the on submit action
+	const onSubmit = (accountTypes: AccountType[]) => {
+		applicationContext.updateAccountTypes(accountTypes);
 
 		//navigate to /customer-form
 		navigate('/customer-form');
@@ -49,10 +44,11 @@ const AccountSelectionForm = () => {
 			<FormContainer
 				formContext={accountFormContext}
 				handleSubmit={handleSubmit((data) => onSubmit(data))}
+				onError={(error) => console.log(error)}
 			>
 				<h4>Select an Account</h4>
 				<ButtonGroup
-					name='accountType'
+					name='accountTypes'
 					options={[
 						{
 							id: 'savings',

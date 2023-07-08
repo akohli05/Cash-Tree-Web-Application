@@ -6,9 +6,6 @@ const StyledCDIcon = styled(EmojiEventsOutlinedIcon)({
 	'outlineWidth': 1,
 	'backgroundColor': '#d9b234',
 	'fontSize': 48,
-	'@media (max-width: 600px)': {
-		fontSize: 20,
-	},
 });
 
 const CDIcon = () => {

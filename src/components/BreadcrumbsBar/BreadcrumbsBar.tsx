@@ -1,23 +1,52 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import styled from '@emotion/styled';
+import { styled } from '@mui/material/styles';
 import { Link, useLocation } from 'react-router-dom';
 import './BreadcrumbStyles.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ApplicationContext } from '../../context/ApplicationContext';
 
-const StyledDiv = styled.div({
+const StyledDiv = styled('div')(({ theme }) => ({
 	display: 'flex',
 	justifyContent: 'space-between',
 	position: 'relative',
 	padding: 8,
 	color: '#327d46',
 	borderBottom: 'ridge rgba(211, 220, 50, .6)',
-});
+	[theme.breakpoints.down('md')]: {
+		flexDirection: 'column',
+	},
+}));
+
+const LinksContainer = styled('div')(({ theme }) => ({
+	[theme.breakpoints.down('sm')]: {
+		display: 'block',
+		width: '280px',
+		height: 'auto',
+	},
+}));
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+	[theme.breakpoints.down('sm')]: {
+		display: 'block',
+	},
+}));
+
+const StyledButton = styled('button')(({ theme }) => ({
+	display: 'none',
+	[theme.breakpoints.down('sm')]: {
+		display: 'inline',
+		backgroundColor: 'rgb(218, 242, 250)',
+		fontSize: 25,
+		borderRadius: '50%',
+	},
+}));
 
 const StyledLink = styled(Link)({
 	textDecoration: 'none',
 	margin: 5,
 	fontSize: 15,
+	pointerEvents: 'none',
 });
 
 interface BreadcrumbsBarProps {
@@ -48,20 +77,23 @@ const BreadcrumbsBar: React.FC<BreadcrumbsBarProps> = ({ currentStep }) => {
 
 	return (
 		<StyledDiv id='styledDiv'>
-			<Typography id='counter'>Step {currentStep} out of 3</Typography>
+			<StyledTypography>Step {currentStep} out of 3</StyledTypography>
 
 			<nav>
-				<button id= 'navButton' onClick={toggleNav}>
+				<StyledButton
+					id='navButton'
+					onClick={toggleNav}
+				>
 					{toggleMenu ? <>&#10005;</> : <>&#9776;</>}
-				</button>
+				</StyledButton>
 
 				{(toggleMenu || screenWidth > 600) && (
-					<div id='list'>
+					<LinksContainer>
 						<StyledLink
-							to='/'
+							to='#'
 							className={
 								location.pathname === '/'
-									? 'breadcrumb-active items'
+									? 'breadcrumb-active items '
 									: 'breadcrumb-not-active items'
 							}
 						>
@@ -69,7 +101,7 @@ const BreadcrumbsBar: React.FC<BreadcrumbsBarProps> = ({ currentStep }) => {
 						</StyledLink>
 						<span className='breadcrumbs-slash'>&#47;</span>
 						<StyledLink
-							to='/customer-form'
+							to='#'
 							className={
 								location.pathname.startsWith('/customer-form')
 									? 'breadcrumb-active items'
@@ -81,7 +113,7 @@ const BreadcrumbsBar: React.FC<BreadcrumbsBarProps> = ({ currentStep }) => {
 						<span className='breadcrumbs-slash'>&#47;</span>
 
 						<StyledLink
-							to='/summary'
+							to='#'
 							className={
 								location.pathname === '/summary'
 									? 'breadcrumb-active items'
@@ -90,7 +122,7 @@ const BreadcrumbsBar: React.FC<BreadcrumbsBarProps> = ({ currentStep }) => {
 						>
 							&#10104; Account Summary
 						</StyledLink>
-					</div>
+					</LinksContainer>
 				)}
 			</nav>
 		</StyledDiv>

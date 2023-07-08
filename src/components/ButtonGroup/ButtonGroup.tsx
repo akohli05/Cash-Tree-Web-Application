@@ -1,6 +1,6 @@
-import { ToggleButtonGroupElement } from 'react-hook-form-mui';
+import { ToggleButtonGroupElement, useFormError } from 'react-hook-form-mui';
 import { ReactNode } from 'react';
-import styled from '@emotion/styled';
+import { styled } from '@mui/material/styles';
 
 interface Option {
 	id: string;
@@ -12,18 +12,25 @@ interface ButtonGroupProps {
 	options: Option[];
 }
 
-const StyledToggleButtonGroupElement = styled(ToggleButtonGroupElement)({
-	'backgroundColor': 'white',
-	'@media (max-width: 600px)': {
-		display: 'block',
-	},
-});
+const StyledToggleButtonGroupElement = styled(ToggleButtonGroupElement)(
+	({ theme }) => ({
+		backgroundColor: 'white',
+		flexDirection: 'row',
+		flexWrap: 'wrap',
 
+		[theme.breakpoints.down('md')]: {
+			margin: 'auto',
+			alignItems: 'center',
+		},
+	})
+);
 const ButtonGroup: React.FC<ButtonGroupProps> = ({ name, options }) => {
 	return (
 		<StyledToggleButtonGroupElement
 			name={name}
 			options={options}
+			required
+			color='secondary'
 		/>
 	);
 };

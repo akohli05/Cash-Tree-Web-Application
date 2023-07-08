@@ -4,32 +4,41 @@ import DateTextField from '../../DateTextField/DateTextField';
 import SocialSecurityField from '../../SocialSecurityField/SocialSecurityField';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
 import occupations from '../../../data/occupations';
+import OptionalTextField from '../../OptionalTextfield/OptionalTextfield';
+import OptionalSelectField from '../../OptionalSelectField/OptionalSelectField';
+import { styled } from '@mui/material/styles';
+
+const StyledDiv = styled('div')(({ theme }) => ({
+	[theme.breakpoints.down('sm')]: {
+		width: '60%',
+	},
+}));
 
 const PrimaryOwnerSection = () => {
 	// Suffix select field values
 	const suffixItems = [
 		{
-			id: '1',
+			id: 'Jr.',
 			label: 'Jr.',
 		},
 		{
-			id: '2',
+			id: 'Sr.',
 			label: 'Sr.',
 		},
 		{
-			id: '3',
+			id: 'II',
 			label: 'II',
 		},
 		{
-			id: '4',
+			id: 'III',
 			label: 'III',
 		},
 		{
-			id: '5',
+			id: 'IV',
 			label: 'IV',
 		},
 		{
-			id: '6',
+			id: 'V',
 			label: 'V',
 		},
 	];
@@ -38,21 +47,21 @@ const PrimaryOwnerSection = () => {
 	let occupationsList: { id: string; label: string }[] = [];
 	{
 		//occupations.map((occupation) => occupationsList.push(occupation));
-		occupationsList = occupations.map((str, index) => ({
+		occupationsList = occupations.map((str) => ({
 			label: str,
-			id: index + 1 + '1',
+			id: str,
 		}));
 	}
 
 	return (
-		<div>
+		<StyledDiv>
 			<h5>Primary Owner</h5>
 			<HorizontalDivider />
 			<TextField
 				label='First Name'
 				name='firstName'
 			/>
-			<TextField
+			<OptionalTextField
 				label='Middle Initial (Optional)'
 				name='middleInitial'
 			/>
@@ -61,7 +70,7 @@ const PrimaryOwnerSection = () => {
 				label='Last Name'
 				name='lastName'
 			/>
-			<SelectField
+			<OptionalSelectField
 				label='Suffix (Optional)'
 				items={suffixItems}
 				name='suffix'
@@ -87,7 +96,7 @@ const PrimaryOwnerSection = () => {
 				items={occupationsList}
 				name='occupation'
 			/>
-		</div>
+		</StyledDiv>
 	);
 };
 

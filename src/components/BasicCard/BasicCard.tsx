@@ -21,16 +21,9 @@ const StyledCard = styled(Card)({
 	'&:hover': {
 		transform: 'scale(1.1)',
 	},
-	'@media (max-width: 600px)': {
-		width: 80,
-		height: 80,
-	},
 });
 
 const StyledTopography = styled(Typography)({
-	'@media (max-width: 600px)': {
-		fontSize: 10,
-	},
 });
 
 interface BasicCardProps {

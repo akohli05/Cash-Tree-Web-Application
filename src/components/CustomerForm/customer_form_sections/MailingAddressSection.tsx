@@ -4,17 +4,27 @@ import states from '../../../data/states';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
 import { RadioButtonGroup } from 'react-hook-form-mui';
 import { useState } from 'react';
+import OptionalTextField from '../../OptionalTextfield/OptionalTextfield';
+import { styled } from '@mui/material/styles';
+
+const StyledDiv = styled('div')(({ theme }) => ({
+	[theme.breakpoints.down('md')]: {
+		width: '80%',
+	},
+	[theme.breakpoints.down('sm')]: {
+		width: '60%',
+	},
+}));
 
 const MailingAddressSection = () => {
 	const [selectedRadio, setSelectedRadio] = useState('Yes');
 
-	const handleChange = (value:string) => {
+	const handleChange = (value: string) => {
 		setSelectedRadio(value);
 	};
 
-
 	return (
-		<div>
+		<StyledDiv>
 			<h5>Mailing Address</h5>
 			<HorizontalDivider />
 
@@ -33,6 +43,7 @@ const MailingAddressSection = () => {
 					},
 				]}
 				onChange={(data) => handleChange(data)}
+				required
 			></RadioButtonGroup>
 			{selectedRadio === 'Yes' ? (
 				''
@@ -44,7 +55,7 @@ const MailingAddressSection = () => {
 						name='addressMailing'
 					/>
 					<br />
-					<TextField
+					<OptionalTextField
 						label='Address Line 2 (Optional)'
 						name='addressAdditionalMailing'
 					/>
@@ -66,7 +77,7 @@ const MailingAddressSection = () => {
 					/>
 				</>
 			)}
-		</div>
+		</StyledDiv>
 	);
 };
 

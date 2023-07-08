@@ -3,6 +3,8 @@ import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import moment from 'moment';
+import { Tooltip, Zoom } from '@mui/material';
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
 	'margin': '25px 0px 0px 0px',
@@ -56,6 +58,10 @@ interface DateFieldProps {
 }
 
 const DateTextField: React.FC<DateFieldProps> = ({ label, name }) => {
+	//Age restriction
+	const today = moment().subtract(18, 'years').calendar();
+	const ageRestriction = moment(today).format('YYYY-MM-DD');
+
 	return (
 		<StyledBox component='form'>
 			<FormControl variant='standard'>
@@ -65,11 +71,18 @@ const DateTextField: React.FC<DateFieldProps> = ({ label, name }) => {
 				>
 					{label}
 				</InputLabel>
-				<BootstrapInput
-					id='bootstrap-input'
-					type='date'
-					name={name}
-				/>
+				<Tooltip
+					TransitionComponent={Zoom}
+					title='Primary Owner must at least 18 years or older.'
+				>
+					<BootstrapInput
+						inputProps={{ max: ageRestriction }}
+						id='bootstrap-input'
+						type='date'
+						name={name}
+						required
+					/>
+				</Tooltip>
 			</FormControl>
 		</StyledBox>
 	);

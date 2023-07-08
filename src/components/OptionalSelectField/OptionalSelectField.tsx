@@ -1,10 +1,10 @@
-import { alpha, styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import Box from '@mui/material/Box';
+import { alpha, styled } from '@mui/material/styles';
+import { SelectElement } from 'react-hook-form-mui';
 
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
+const StyledSelectField = styled(SelectElement)(({ theme }) => ({
 	'label + &': {
 		marginTop: theme.spacing(3),
 		marginBottom: theme.spacing(0.5),
@@ -16,8 +16,8 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 		'border': '1px solid',
 		'borderColor': theme.palette.mode === 'light' ? '#E0E3E7' : '#2D3843',
 		'fontSize': 16,
-		'width': 'auto',
-		'padding': '10px 12px',
+		'width': '200px',
+		'padding': '10px 10px',
 		'transition': theme.transitions.create([
 			'border-color',
 			'background-color',
@@ -49,34 +49,31 @@ const StyledBox = styled(Box)({
 	marginTop: '10px',
 });
 
-interface SocialSecurityFieldProps {
+interface OptionalSelectFieldProps {
 	label: string;
+	items: { id: string; label: string }[];
 	name: string;
 }
 
-const SocialSecurityField: React.FC<SocialSecurityFieldProps> = ({
-	label,
-	name,
-}) => {
+const OptionalSelectField: React.FC<OptionalSelectFieldProps> = ({ label, items, name }) => {
 	return (
-		<StyledBox component='form'>
-			<FormControl variant='standard'>
+		<StyledBox>
+			<FormControl>
 				<InputLabel
 					shrink
-					htmlFor='bootstrap-input'
+					htmlFor='selectfield'
 				>
 					{label}
 				</InputLabel>
-				<BootstrapInput
-					id='bootstrap-input'
-					placeholder='***-**-****'
-					inputProps={{ maxLength: 9 }}
+				<StyledSelectField
+					id='selectfield'
+					style={{ marginLeft: '0px 0px -10px 0px' }}
 					name={name}
-					required
+					options={items}
 				/>
 			</FormControl>
 		</StyledBox>
 	);
 };
 
-export default SocialSecurityField;
+export default OptionalSelectField;

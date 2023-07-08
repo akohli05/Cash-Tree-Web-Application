@@ -6,49 +6,84 @@ import HomeAddressSection from './customer_form_sections/HomeAddressSection';
 import MailingAddressSection from './customer_form_sections/MailingAddressSection';
 import { useNavigate } from 'react-router-dom';
 import { FormContainer, useForm } from 'react-hook-form-mui';
-import styled from '@emotion/styled';
-import ApplicationContext, {
-	Application,
-	Customer,
-} from '../../context/ApplicationContext';
+import { styled } from '@mui/material/styles';
+import { ApplicationContext, Customer } from '../../context/ApplicationContext';
 import { useContext } from 'react';
 import Box from '@mui/material/Box';
+import moment from 'moment';
 
-const StyledBox = styled(Box)({
-	'display': 'flex',
-	'justifyContent': 'center',
-	'@media (max-width: 600px)': {
-		flexDirection: 'column',
-		marginLeft: 100,
-		width: 300,
+const StyledBox = styled(Box)(({ theme }) => ({
+	display: 'flex',
+	justifyContent: 'center',
+
+	[theme.breakpoints.down('md')]: {
+		width: '100%',
+		marginLeft: 'auto',
+		padding: 20,
 	},
-});
+
+	[theme.breakpoints.down('sm')]: {
+		padding: 10,
+		width: '50%',
+	},
+}));
 
 const CustomerForm = () => {
 	const navigate = useNavigate();
-	const application = useContext(ApplicationContext);
+	const applicationContext = useContext(ApplicationContext);
 
 	//Form and context set up
-	const formContext = useForm<Customer>({});
+	const formContext = useForm<Customer>({
+		defaultValues: {
+			firstName: applicationContext.state.customer?.firstName,
+			middleInitial: applicationContext.state.customer?.middleInitial,
+			lastName: applicationContext.state.customer?.lastName,
+			suffix: applicationContext.state.customer?.suffix,
+			birthDate: applicationContext.state.customer?.birthDate,
+			socialSecurity: applicationContext.state.customer?.socialSecurity,
+			maidenNameOfMother: applicationContext.state.customer?.maidenNameOfMother,
+			occupation: applicationContext.state.customer?.occupation,
+			citizenship: applicationContext.state.customer?.citizenship,
+			email: applicationContext.state.customer?.email,
+			personalPhone: applicationContext.state.customer?.personalPhone,
+			workPhone: applicationContext.state.customer?.workPhone,
+			phoneExtension: applicationContext.state.customer?.phoneExtension,
+			address: applicationContext.state.customer?.address,
+			addressAdditional: applicationContext.state.customer?.addressAdditional,
+			city: applicationContext.state.customer?.city,
+			state: applicationContext.state.customer?.state,
+			zipcode: applicationContext.state.customer?.zipcode,
+			mailingRadioButtonGroup:
+				applicationContext.state.customer?.mailingRadioButtonGroup,
+			addressMailing: applicationContext.state.customer?.addressMailing,
+			addressAdditionalMailing:
+				applicationContext.state.customer?.addressAdditionalMailing,
+			cityMailing: applicationContext.state.customer?.cityMailing,
+			stateMailing: applicationContext.state.customer?.stateMailing,
+			zipcodeMailing: applicationContext.state.customer?.zipcodeMailing,
+		},
+	});
 
 	const { handleSubmit } = formContext;
 
-	const onSubmit = (data: Customer) => {
-		//bulding the application type
-		const application: Partial<Application> = {
-			customer: data,
-		};
-		//import useContext save the new object here
+	const onSubmit = (customer: Customer, btnClicked: string) => {
+		applicationContext.updateCustomer(customer);
 
-		//navigate to /summary
-		navigate('/summary');
+		if (btnClicked === 'Next') {
+			//navigate to /summary
+			navigate('/summary');
+		} else {
+			//navigate to /
+			navigate('/');
+		}
 	};
 
 	return (
 		<StyledBox>
 			<FormContainer
 				formContext={formContext}
-				handleSubmit={handleSubmit((data) => onSubmit(data))}
+				// handleSubmit={handleSubmit((data) => onSubmit(data))}
+				onError={(error) => console.log(error)}
 			>
 				<h4>Your Information</h4>
 
@@ -58,7 +93,21 @@ const CustomerForm = () => {
 				<HomeAddressSection />
 				<MailingAddressSection />
 
-				<BasicButton text='Next' />
+				<BasicButton
+					text='Back'
+					onClick={handleSubmit((data) => {
+						const back = 'Back';
+						onSubmit(data, back);
+					})}
+				/>
+
+				<BasicButton
+					text='Next'
+					onClick={handleSubmit((data) => {
+						const next = 'Next';
+						onSubmit(data, next);
+					})}
+				/>
 			</FormContainer>
 		</StyledBox>
 	);

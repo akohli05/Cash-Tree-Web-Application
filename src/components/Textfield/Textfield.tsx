@@ -54,6 +54,7 @@ interface TextFieldProps {
 	name: string;
 }
 const TextField: React.FC<TextFieldProps> = ({ label, name }) => {
+
 	return (
 		<StyledBox component='form'>
 			<FormControl variant='standard'>
@@ -66,6 +67,7 @@ const TextField: React.FC<TextFieldProps> = ({ label, name }) => {
 				<BootstrapInput
 					id='bootstrap-input'
 					name={name}
+					required
 				/>
 			</FormControl>
 		</StyledBox>

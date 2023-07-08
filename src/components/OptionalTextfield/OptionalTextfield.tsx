@@ -1,10 +1,10 @@
 import { alpha, styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import { TextFieldElement } from 'react-hook-form-mui';
 
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
+const BootstrapInput = styled(TextFieldElement)(({ theme }) => ({
 	'label + &': {
 		marginTop: theme.spacing(3),
 		marginBottom: theme.spacing(0.5),
@@ -49,15 +49,11 @@ const StyledBox = styled(Box)({
 	marginTop: '10px',
 });
 
-interface SocialSecurityFieldProps {
+interface OptionalTextFieldProps {
 	label: string;
 	name: string;
 }
-
-const SocialSecurityField: React.FC<SocialSecurityFieldProps> = ({
-	label,
-	name,
-}) => {
+const OptionalTextField: React.FC<OptionalTextFieldProps> = ({ label, name }) => {
 	return (
 		<StyledBox component='form'>
 			<FormControl variant='standard'>
@@ -69,14 +65,11 @@ const SocialSecurityField: React.FC<SocialSecurityFieldProps> = ({
 				</InputLabel>
 				<BootstrapInput
 					id='bootstrap-input'
-					placeholder='***-**-****'
-					inputProps={{ maxLength: 9 }}
 					name={name}
-					required
 				/>
 			</FormControl>
 		</StyledBox>
 	);
 };
 
-export default SocialSecurityField;
+export default OptionalTextField;

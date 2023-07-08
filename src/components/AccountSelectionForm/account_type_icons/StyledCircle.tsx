@@ -13,10 +13,6 @@ const StyledIconButton = styled(IconButton)({
 	'&:hover': {
 		background: '#5db3de',
 	},
-	'@media (max-width: 600px)': {
-		width: 30,
-		height: 30,
-	},
 });
 
 const StyledCircle = ({

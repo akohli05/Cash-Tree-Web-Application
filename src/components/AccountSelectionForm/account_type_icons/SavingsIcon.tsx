@@ -3,12 +3,9 @@ import styled from '@emotion/styled';
 import StyledCircle from './StyledCircle';
 
 const StyledSavingsIcon = styled(SavingsOutlinedIcon)({
-	'outlineWidth': 1,
-	'backgroundColor': '#978dfc',
-	'fontSize': 48,
-	'@media (max-width: 600px)': {
-		fontSize: 20,
-	},
+	outlineWidth: 1,
+	backgroundColor: '#978dfc',
+	fontSize: 48,
 });
 
 const SavingsIcon = () => {

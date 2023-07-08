@@ -70,6 +70,7 @@ const SelectField: React.FC<SelectFieldProps> = ({ label, items, name }) => {
 					style={{ marginLeft: '0px 0px -10px 0px' }}
 					name={name}
 					options={items}
+					required
 				/>
 			</FormControl>
 		</StyledBox>
