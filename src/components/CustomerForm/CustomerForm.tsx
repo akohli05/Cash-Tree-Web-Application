@@ -66,23 +66,18 @@ const CustomerForm = () => {
 
 	const { handleSubmit } = formContext;
 
-	const onSubmit = (customer: Customer, btnClicked: string) => {
+	const onSubmit = (customer: Customer) => {
 		applicationContext.updateCustomer(customer);
 
-		if (btnClicked === 'Next') {
-			//navigate to /summary
-			navigate('/summary');
-		} else {
-			//navigate to /
-			navigate('/');
-		}
+		//navigate to /summary
+		navigate('/summary');
 	};
 
 	return (
 		<StyledBox>
 			<FormContainer
 				formContext={formContext}
-				// handleSubmit={handleSubmit((data) => onSubmit(data))}
+				handleSubmit={handleSubmit((data) => onSubmit(data))}
 				onError={(error) => console.log(error)}
 			>
 				<h4>Your Information</h4>
@@ -93,21 +88,7 @@ const CustomerForm = () => {
 				<HomeAddressSection />
 				<MailingAddressSection />
 
-				<BasicButton
-					text='Back'
-					onClick={handleSubmit((data) => {
-						const back = 'Back';
-						onSubmit(data, back);
-					})}
-				/>
-
-				<BasicButton
-					text='Next'
-					onClick={handleSubmit((data) => {
-						const next = 'Next';
-						onSubmit(data, next);
-					})}
-				/>
+				<BasicButton text='Next' />
 			</FormContainer>
 		</StyledBox>
 	);

@@ -6,31 +6,34 @@ import { Container } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import BasicButton from '../Button/Button';
 
-const Wrapper = styled(Box)({
-	display: 'grid',
-	gridTemplateColumns: 'repeat(2, 1fr)',
-	gridGap: 8,
-	marginTop: 16,
-});
-
 const StyledBox = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	justifyContent: 'center',
 	paddingLeft: 100,
 	paddingRight: 100,
-	textAlign: 'center',
 
 	[theme.breakpoints.down('md')]: {
-		width: '100%',
 		marginLeft: 'auto',
 		padding: 20,
 	},
 
 	[theme.breakpoints.down('sm')]: {
 		padding: 10,
-		width: '50%',
 	},
 }));
+
+const Section = styled(Box)({
+	textAlign: 'center',
+	backgroundColor: '#f7f6f2',
+	boxShadow: '0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24)',
+});
+
+const Wrapper = styled(Box)({
+	display: 'grid',
+	gridTemplateColumns: 'repeat(1, 1fr)',
+	gridGap: 8,
+	marginTop: 16,
+});
 
 const Summary = () => {
 	const applicationContext = useContext(ApplicationContext);
@@ -92,13 +95,12 @@ const Summary = () => {
 	return (
 		<StyledBox>
 			<Container>
-				<Box>
-					<h5>Account Types(s)</h5>
-					<p>{accountTypes}</p>
-				</Box>
-
 				<Wrapper>
-					<Box style={{ backgroundColor: 'lightblue' }}>
+					<Section>
+						<h5>Account Types(s)</h5>
+						<p>{accountTypes}</p>
+					</Section>
+					<Section>
 						<h5>Primary Owner</h5>
 						<p>First Name: {firstName}</p>
 						<p>Middle Initial (Optional): {middleInitial}</p>
@@ -108,33 +110,50 @@ const Summary = () => {
 						<p>Social Security: {socialSecurity}</p>
 						<p>Mother's Maiden Name: {maidenNameOfMother}</p>
 						<p>Occupation: {occupation}</p>
-					</Box>
-					<Box style={{ backgroundColor: 'lightcoral' }}>
+					</Section>
+					<Section>
 						<h5>Citizenship</h5>
 						<p>Citizenship: {citizenship}</p>
 
 						<h5>Contact</h5>
 						<p>Email: {email}</p>
-						<p>Last Name: {lastName}</p>
-						<p>Suffix (Optional): {firstName}</p>
-						<p>Birth Date: {birthDate}</p>
-						<p>Social Security: {socialSecurity}</p>
-						<p>Mother's Maiden Name: {maidenNameOfMother}</p>
-						<p>Occupation: {occupation}</p>
-					</Box>
-					<Box style={{ backgroundColor: 'lightpink' }}> one</Box>
-					<Box style={{ backgroundColor: 'lightpurple' }}>two</Box>
+						<p>Personal Phone: {personalPhone}</p>
+						<p>Work Phone (Optional): {workPhone}</p>
+						<p>Phone Extension: {phoneExtension}</p>
+					</Section>
+					<Section>
+						<h5>Home Address</h5>
+						<p>Address: {address}</p>
+						<p>Additional Address: {addressAdditional}</p>
+						<p>City: {city}</p>
+						<p>State: {state}</p>
+						<p>Zip Code: {zipcode}</p>
+					</Section>
+					<Section>
+						<h5>Mailing Address</h5>
+						{mailingRadioButtonGroup[0] === 'No' ? (
+							<>
+								<p>Address: {addressMailing}</p>
+								<p>Additional Address: {addressAdditionalMailing}</p>
+								<p>City: {cityMailing}</p>
+								<p>State: {stateMailing}</p>
+								<p>Zip Code: {zipcodeMailing}</p>
+							</>
+						) : (
+							'Mailing address is the same as the home address.'
+						)}
+					</Section>
 				</Wrapper>
-			</Container>
-			<BasicButton
-				text='Back'
-				onClick={() => navigate('/customer-form')}
-			/>
+				<BasicButton
+					text='Back'
+					onClick={() => navigate('/customer-form')}
+				/>
 
-			<BasicButton
-				text='Next'
-				onClick={() => navigate('/confirmation')}
-			/>
+				<BasicButton
+					text='Next'
+					onClick={() => navigate('/confirmation')}
+				/>
+			</Container>
 		</StyledBox>
 	);
 };

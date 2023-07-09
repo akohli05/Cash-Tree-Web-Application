@@ -27,7 +27,11 @@ const AccountSelectionForm = () => {
 	const applicationContext = useContext(ApplicationContext);
 
 	//Form and context set up
-	const accountFormContext = useForm<AccountType[]>({});
+	const accountFormContext = useForm<AccountType[]>({
+		/**defaultValues: {
+			accountTypes: applicationContext.state?.accountTypes,
+		},*/
+	});
 
 	const { handleSubmit } = accountFormContext;
 
@@ -51,23 +55,24 @@ const AccountSelectionForm = () => {
 					name='accountTypes'
 					options={[
 						{
-							id: 'savings',
+							id: 'Savings',
 							label: <BasicCard accountType={'Savings'} />,
 						},
 						{
-							id: 'moneyMarket',
+							id: 'Money Market',
 							label: <BasicCard accountType={'Money Market'} />,
 						},
 						{
-							id: 'cd',
+							id: 'Certificate of Deposit',
 							label: <BasicCard accountType={'Certificate of Deposit'} />,
 						},
 						{
-							id: 'spending',
+							id: 'Spending',
 							label: <BasicCard accountType={'Spending'} />,
 						},
 					]}
 				/>
+				<br />
 				<BasicButton text='Next' />
 			</FormContainer>
 		</StyledBox>

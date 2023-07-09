@@ -1,12 +1,11 @@
 import { alpha, styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import moment from 'moment';
-import { Tooltip, Zoom } from '@mui/material';
+import { InputLabel, Tooltip, Zoom } from '@mui/material';
+import { TextFieldElement } from 'react-hook-form-mui';
 
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
+const BootstrapInput = styled(TextFieldElement)(({ theme }) => ({
 	'margin': '25px 0px 0px 0px',
 	'label + &': {
 		marginTop: theme.spacing(3),
