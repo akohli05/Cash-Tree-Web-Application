@@ -1,12 +1,9 @@
 import TextField from '../../Textfield/Textfield';
 import SelectField from '../../SelectField/SelectField';
-import DateTextField from '../../DateTextField/DateTextField';
-import SocialSecurityField from '../../SocialSecurityField/SocialSecurityField';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
 import occupations from '../../../data/occupations';
-import OptionalTextField from '../../OptionalTextfield/OptionalTextfield';
-import OptionalSelectField from '../../OptionalSelectField/OptionalSelectField';
 import { styled } from '@mui/material/styles';
+import DateField from '../../DateField/DateField';
 
 const StyledDiv = styled('div')(({ theme }) => ({
 	[theme.breakpoints.down('sm')]: {
@@ -61,29 +58,33 @@ const PrimaryOwnerSection = () => {
 				label='First Name'
 				name='firstName'
 			/>
-			<OptionalTextField
+			<TextField
 				label='Middle Initial (Optional)'
 				name='middleInitial'
+				required={false}
 			/>
 			<br />
 			<TextField
 				label='Last Name'
 				name='lastName'
 			/>
-			<OptionalSelectField
+			<SelectField
 				label='Suffix (Optional)'
 				items={suffixItems}
 				name='suffix'
+				required={false}
 			/>
 			<br />
-			<DateTextField
+			<DateField
 				label='Birth Date'
 				name='birthDate'
 			/>
 			<br />
-			<SocialSecurityField
+			<TextField
 				label='Social Security'
 				name='socialSecurity'
+				placeholder='***-**-****'
+				inputProps={{ maxLength: 9 }}
 			/>
 			<br />
 			<TextField

@@ -9,8 +9,7 @@ import BasicButton from '../Button/Button';
 const StyledBox = styled(Box)(({ theme }) => ({
 	display: 'flex',
 	justifyContent: 'center',
-	paddingLeft: 100,
-	paddingRight: 100,
+	padding: '0px 100px',
 
 	[theme.breakpoints.down('md')]: {
 		marginLeft: 'auto',
@@ -29,9 +28,9 @@ const Section = styled(Box)({
 });
 
 const Wrapper = styled(Box)({
-	display: 'grid',
-	gridTemplateColumns: 'repeat(1, 1fr)',
-	gridGap: 8,
+	display: 'flex',
+	flexDirection: 'column',
+	rowGap: 8,
 	marginTop: 16,
 });
 
@@ -39,58 +38,38 @@ const Summary = () => {
 	const applicationContext = useContext(ApplicationContext);
 	const navigate = useNavigate();
 
-	//Current form data
 	//Account Type
-	const accountTypes = [applicationContext.state.accountTypes];
+	const accountTypes = applicationContext.state.accountTypes;
 
-	//Primary owner
-	const firstName = [applicationContext.state.customer.firstName];
-	const middleInitial = [applicationContext.state.customer.middleInitial];
-	const lastName = [applicationContext.state.customer.lastName];
-
-	const suffix = [applicationContext.state.customer.suffix];
-	const birthDate = [applicationContext.state.customer.birthDate];
-	const socialSecurity = [applicationContext.state.customer.socialSecurity];
-	const maidenNameOfMother = [
-		applicationContext.state.customer.maidenNameOfMother,
-	];
-	const occupation = [applicationContext.state.customer.occupation];
-
-	//Citizenship and Contact
-	const citizenship = [applicationContext.state.customer.citizenship];
-	const email = [applicationContext.state.customer.email];
-	const personalPhone = [applicationContext.state.customer.personalPhone];
-	const workPhone = [applicationContext.state.customer.workPhone];
-	const phoneExtension = [applicationContext.state.customer.phoneExtension];
-
-	//Home Address
-	const address = [applicationContext.state.customer.address];
-	const addressAdditional = [
-		applicationContext.state.customer.addressAdditional,
-	];
-	const city = [applicationContext.state.customer.city];
-	const state = [applicationContext.state.customer.state];
-	const zipcode = [applicationContext.state.customer.zipcode];
-
-	//Mailing Address
-	const mailingRadioButtonGroup = [
-		applicationContext.state.customer.mailingRadioButtonGroup,
-	];
-
-	let addressMailing = [applicationContext.state.customer.addressMailing];
-	let addressAdditionalMailing = [
-		applicationContext.state.customer.addressAdditionalMailing,
-	];
-	let cityMailing = [applicationContext.state.customer.cityMailing];
-	let stateMailing = [applicationContext.state.customer.stateMailing];
-	let zipcodeMailing = [applicationContext.state.customer.zipcodeMailing];
-
-	if (mailingRadioButtonGroup[0] === 'Yes') {
-		addressMailing = address;
-		addressAdditionalMailing = addressAdditional;
-		cityMailing = city;
-		stateMailing = state;
-	}
+	/**
+	 * Customer Data
+	 */
+	const {
+		firstName,
+		lastName,
+		middleInitial,
+		suffix,
+		birthDate,
+		socialSecurity,
+		maidenNameOfMother,
+		occupation,
+		citizenship,
+		email,
+		personalPhone,
+		workPhone,
+		phoneExtension,
+		address,
+		addressAdditional,
+		city,
+		state,
+		zipcode,
+		isHomeandMailingSame,
+		addressMailing,
+		addressAdditionalMailing,
+		cityMailing,
+		stateMailing,
+		zipcodeMailing,
+	} = applicationContext.state.customer;
 
 	return (
 		<StyledBox>
@@ -103,9 +82,9 @@ const Summary = () => {
 					<Section>
 						<h5>Primary Owner</h5>
 						<p>First Name: {firstName}</p>
-						<p>Middle Initial (Optional): {middleInitial}</p>
+						{middleInitial && <p>Middle Initial (Optional): {middleInitial}</p>}
 						<p>Last Name: {lastName}</p>
-						<p>Suffix (Optional): {suffix}</p>
+						{suffix && <p>Suffix (Optional): {suffix}</p> }
 						<p>Birth Date: {birthDate}</p>
 						<p>Social Security: {socialSecurity}</p>
 						<p>Mother's Maiden Name: {maidenNameOfMother}</p>
@@ -118,23 +97,23 @@ const Summary = () => {
 						<h5>Contact</h5>
 						<p>Email: {email}</p>
 						<p>Personal Phone: {personalPhone}</p>
-						<p>Work Phone (Optional): {workPhone}</p>
+						{workPhone && <p>Work Phone (Optional): {workPhone}</p> }
 						<p>Phone Extension: {phoneExtension}</p>
 					</Section>
 					<Section>
 						<h5>Home Address</h5>
 						<p>Address: {address}</p>
-						<p>Additional Address: {addressAdditional}</p>
+						{addressAdditional && <p>Additional Address: {addressAdditional}</p> }
 						<p>City: {city}</p>
 						<p>State: {state}</p>
 						<p>Zip Code: {zipcode}</p>
 					</Section>
 					<Section>
 						<h5>Mailing Address</h5>
-						{mailingRadioButtonGroup[0] === 'No' ? (
+						{isHomeandMailingSame === 'No' ? (
 							<>
 								<p>Address: {addressMailing}</p>
-								<p>Additional Address: {addressAdditionalMailing}</p>
+								{addressAdditionalMailing && <p>Additional Address: {addressAdditionalMailing}</p>}
 								<p>City: {cityMailing}</p>
 								<p>State: {stateMailing}</p>
 								<p>Zip Code: {zipcodeMailing}</p>

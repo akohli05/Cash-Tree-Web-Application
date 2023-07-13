@@ -1,6 +1,5 @@
-import TextField from "../../Textfield/Textfield";
-import HorizontalDivider from "../../HorizontalDivider/HorizontalDivider";
-import OptionalTextField from "../../OptionalTextfield/OptionalTextfield";
+import TextField from '../../Textfield/Textfield';
+import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
 import { styled } from '@mui/material/styles';
 
 const StyledDiv = styled('div')(({ theme }) => ({
@@ -14,11 +13,24 @@ const ContactSection = () => {
 		<StyledDiv>
 			<h5>Contact Information</h5>
 			<HorizontalDivider />
-
-			<TextField label='Email' name='email' />
-			<TextField label='Personal Phone' name='personalPhone'/> <br />
-			<OptionalTextField label='Work Phone (Optional)' name='workPhone'/>
-			<TextField label='Ext' name='phoneExtension'/>
+			<TextField
+				label='Email'
+				name='email'
+			/>
+			<TextField
+				label='Personal Phone'
+				name='personalPhone'
+			/>{' '}
+			<br />
+			<TextField
+				label='Work Phone (Optional)'
+				name='workPhone'
+				required={false}
+			/>
+			<TextField
+				label='Ext'
+				name='phoneExtension'
+			/>
 		</StyledDiv>
 	);
 };

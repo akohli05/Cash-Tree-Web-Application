@@ -22,6 +22,7 @@ const BasicButton: React.FC<BasicButtonProps> = ({ text, onClick }) => {
 			variant='contained'
 			type='submit'
 			name={text}
+			aria-label={text}
 			onClick={onClick}
 		>
 			{text}

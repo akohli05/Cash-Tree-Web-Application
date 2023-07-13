@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { FormContainer, useForm } from 'react-hook-form-mui';
 import { styled } from '@mui/material/styles';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
@@ -7,9 +6,7 @@ import BasicButton from '../Button/Button';
 import BasicCard from '../BasicCard/BasicCard';
 import {
 	AccountType,
-	ApplicationContext,
 } from '../../context/ApplicationContext';
-import { useContext } from 'react';
 
 const StyledBox = styled(Box)(({ theme }) => ({
 	display: 'flex',
@@ -21,11 +18,11 @@ const StyledBox = styled(Box)(({ theme }) => ({
 	},
 }));
 
-const AccountSelectionForm = () => {
-	const navigate = useNavigate();
-	//import useContext save the new object here
-	const applicationContext = useContext(ApplicationContext);
+interface AccountSelectionFormProps {
+	onSave: (accountTypes: AccountType[]) => void;
+}
 
+const AccountSelectionForm:React.FC<AccountSelectionFormProps> = ({ onSave }) => {
 	//Form and context set up
 	const accountFormContext = useForm<AccountType[]>({
 		/**defaultValues: {
@@ -35,19 +32,11 @@ const AccountSelectionForm = () => {
 
 	const { handleSubmit } = accountFormContext;
 
-	//Handles the on submit action
-	const onSubmit = (accountTypes: AccountType[]) => {
-		applicationContext.updateAccountTypes(accountTypes);
-
-		//navigate to /customer-form
-		navigate('/customer-form');
-	};
-
 	return (
 		<StyledBox>
 			<FormContainer
 				formContext={accountFormContext}
-				handleSubmit={handleSubmit((data) => onSubmit(data))}
+				handleSubmit={handleSubmit((data) => onSave(data))}
 				onError={(error) => console.log(error)}
 			>
 				<h4>Select an Account</h4>

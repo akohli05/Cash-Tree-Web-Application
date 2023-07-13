@@ -4,13 +4,11 @@ import CitizenshipSection from './customer_form_sections/CitizenshipSection';
 import ContactSection from './customer_form_sections/ContactSection';
 import HomeAddressSection from './customer_form_sections/HomeAddressSection';
 import MailingAddressSection from './customer_form_sections/MailingAddressSection';
-import { useNavigate } from 'react-router-dom';
 import { FormContainer, useForm } from 'react-hook-form-mui';
 import { styled } from '@mui/material/styles';
 import { ApplicationContext, Customer } from '../../context/ApplicationContext';
 import { useContext } from 'react';
 import Box from '@mui/material/Box';
-import moment from 'moment';
 
 const StyledBox = styled(Box)(({ theme }) => ({
 	display: 'flex',
@@ -28,8 +26,11 @@ const StyledBox = styled(Box)(({ theme }) => ({
 	},
 }));
 
-const CustomerForm = () => {
-	const navigate = useNavigate();
+interface CustomerFormProps {
+	onSave: (customer: Customer) => void;
+}
+
+const CustomerForm: React.FC<CustomerFormProps> = ({onSave}) => {
 	const applicationContext = useContext(ApplicationContext);
 
 	//Form and context set up
@@ -53,8 +54,8 @@ const CustomerForm = () => {
 			city: applicationContext.state.customer?.city,
 			state: applicationContext.state.customer?.state,
 			zipcode: applicationContext.state.customer?.zipcode,
-			mailingRadioButtonGroup:
-				applicationContext.state.customer?.mailingRadioButtonGroup,
+			isHomeandMailingSame:
+				applicationContext.state.customer?.isHomeandMailingSame,
 			addressMailing: applicationContext.state.customer?.addressMailing,
 			addressAdditionalMailing:
 				applicationContext.state.customer?.addressAdditionalMailing,
@@ -66,18 +67,11 @@ const CustomerForm = () => {
 
 	const { handleSubmit } = formContext;
 
-	const onSubmit = (customer: Customer) => {
-		applicationContext.updateCustomer(customer);
-
-		//navigate to /summary
-		navigate('/summary');
-	};
-
 	return (
 		<StyledBox>
 			<FormContainer
 				formContext={formContext}
-				handleSubmit={handleSubmit((data) => onSubmit(data))}
+				handleSubmit={handleSubmit((data) => onSave(data))}
 				onError={(error) => console.log(error)}
 			>
 				<h4>Your Information</h4>

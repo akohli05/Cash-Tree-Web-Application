@@ -2,7 +2,6 @@ import TextField from '../../Textfield/Textfield';
 import SelectField from '../../SelectField/SelectField';
 import states from '../../../data/states';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
-import OptionalTextField from '../../OptionalTextfield/OptionalTextfield';
 import { styled } from '@mui/material/styles';
 
 const StyledDiv = styled('div')(({ theme }) => ({
@@ -18,13 +17,14 @@ const HomeAddressSection = () => {
 			<HorizontalDivider />
 
 			<TextField
-				label='Address'
+				label='Home Address'
 				name='address'
 			/>
 			<br />
-			<OptionalTextField
+			<TextField
 				label='Address Line 2 (Optional)'
 				name='addressAdditional'
+				required={false}
 			/>
 			<br />
 			<TextField

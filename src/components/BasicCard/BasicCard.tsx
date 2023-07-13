@@ -46,7 +46,7 @@ const BasicCard: React.FC<BasicCardProps> = ({ accountType }) => {
 	}
 
 	return (
-		<StyledCard>
+		<StyledCard aria-label={accountType}>
 			<CardActionArea>
 				<CardContent>
 					{accountTypeIcon()}

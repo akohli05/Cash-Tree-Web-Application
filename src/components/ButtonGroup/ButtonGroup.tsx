@@ -28,6 +28,8 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ name, options }) => {
 	return (
 		<StyledToggleButtonGroupElement
 			name={name}
+			id={name}
+			aria-label={name}
 			options={options}
 			required
 			color='secondary'

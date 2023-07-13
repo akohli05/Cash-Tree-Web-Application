@@ -53,9 +53,15 @@ interface SelectFieldProps {
 	label: string;
 	items: { id: string; label: string }[];
 	name: string;
+	required?: boolean;
 }
 
-const SelectField: React.FC<SelectFieldProps> = ({ label, items, name }) => {
+const SelectField: React.FC<SelectFieldProps> = ({
+	label,
+	items,
+	name,
+	required = true,
+}) => {
 	return (
 		<StyledBox>
 			<FormControl>
@@ -67,10 +73,12 @@ const SelectField: React.FC<SelectFieldProps> = ({ label, items, name }) => {
 				</InputLabel>
 				<StyledSelectField
 					id='selectfield'
+					aria-label={name}
 					style={{ marginLeft: '0px 0px -10px 0px' }}
 					name={name}
 					options={items}
-					required
+					role='selectfield'
+					required={required}
 				/>
 			</FormControl>
 		</StyledBox>

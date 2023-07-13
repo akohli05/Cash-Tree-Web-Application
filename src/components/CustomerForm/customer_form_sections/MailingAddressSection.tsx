@@ -4,7 +4,6 @@ import states from '../../../data/states';
 import HorizontalDivider from '../../HorizontalDivider/HorizontalDivider';
 import { RadioButtonGroup } from 'react-hook-form-mui';
 import { useState } from 'react';
-import OptionalTextField from '../../OptionalTextfield/OptionalTextfield';
 import { styled } from '@mui/material/styles';
 
 const StyledDiv = styled('div')(({ theme }) => ({
@@ -30,8 +29,9 @@ const MailingAddressSection = () => {
 
 			<RadioButtonGroup
 				row
+				name='isHomeandMailingSame'
+				aria-label='isHomeandMailingSame'
 				label='Is your mailing address the same as your home address?'
-				name='mailingRadioButtonGroup'
 				options={[
 					{
 						id: 'Yes',
@@ -51,13 +51,14 @@ const MailingAddressSection = () => {
 				<>
 					<br />
 					<TextField
-						label='Address'
+						label='Mailing Address'
 						name='addressMailing'
 					/>
 					<br />
-					<OptionalTextField
+					<TextField
 						label='Address Line 2 (Optional)'
 						name='addressAdditionalMailing'
+						required={false}
 					/>
 					<br />
 					<TextField

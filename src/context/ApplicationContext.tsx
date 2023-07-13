@@ -21,13 +21,13 @@ export interface Customer {
 	workPhone?: string;
 	phoneExtension: string;
 	address: string;
-	addressAdditional: string;
+	addressAdditional?: string;
 	city: string;
 	state: string;
 	zipcode: string;
-	mailingRadioButtonGroup: string;
+	isHomeandMailingSame: string,
 	addressMailing: string;
-	addressAdditionalMailing: string;
+	addressAdditionalMailing?: string;
 	cityMailing: string;
 	stateMailing: string;
 	zipcodeMailing: string;

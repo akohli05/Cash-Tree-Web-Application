@@ -1,10 +1,12 @@
 import { alpha, styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
+import moment from 'moment';
+import { InputLabel, Tooltip, Zoom } from '@mui/material';
 import { TextFieldElement } from 'react-hook-form-mui';
 
 const BootstrapInput = styled(TextFieldElement)(({ theme }) => ({
+	'margin': '25px 0px 0px 0px',
 	'label + &': {
 		marginTop: theme.spacing(3),
 		marginBottom: theme.spacing(0.5),
@@ -17,7 +19,7 @@ const BootstrapInput = styled(TextFieldElement)(({ theme }) => ({
 		'borderColor': theme.palette.mode === 'light' ? '#E0E3E7' : '#2D3843',
 		'fontSize': 16,
 		'width': 'auto',
-		'padding': '10px 12px',
+		'padding': '10px 57px',
 		'transition': theme.transitions.create([
 			'border-color',
 			'background-color',
@@ -49,34 +51,42 @@ const StyledBox = styled(Box)({
 	marginTop: '10px',
 });
 
-interface SocialSecurityFieldProps {
+interface DateFieldProps {
 	label: string;
 	name: string;
 }
 
-const SocialSecurityField: React.FC<SocialSecurityFieldProps> = ({
-	label,
-	name,
-}) => {
+const DateField: React.FC<DateFieldProps> = ({ label, name }) => {
+	//Age restriction
+	const today = moment().subtract(18, 'years').calendar();
+	const ageRestriction = moment(today).format('YYYY-MM-DD');
+
 	return (
 		<StyledBox component='form'>
 			<FormControl variant='standard'>
 				<InputLabel
 					shrink
-					htmlFor='bootstrap-input'
+					htmlFor={name}
 				>
 					{label}
 				</InputLabel>
-				<BootstrapInput
-					id='bootstrap-input'
-					placeholder='***-**-****'
-					inputProps={{ maxLength: 9 }}
-					name={name}
-					required
-				/>
+				<Tooltip
+					TransitionComponent={Zoom}
+					title='Primary Owner must at least 18 years or older.'
+				>
+					<BootstrapInput
+						inputProps={{ max: ageRestriction }}
+						id={name}
+						aria-label={name}
+						type='date'
+						name={name}
+						role='datefield'
+						required
+					/>
+				</Tooltip>
 			</FormControl>
 		</StyledBox>
 	);
 };
 
-export default SocialSecurityField;
+export default DateField;

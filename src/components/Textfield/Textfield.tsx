@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import { TextFieldElement } from 'react-hook-form-mui';
+import { InputBaseComponentProps } from '@mui/material/InputBase';
 
 const BootstrapInput = styled(TextFieldElement)(({ theme }) => ({
 	'label + &': {
@@ -52,22 +53,34 @@ const StyledBox = styled(Box)({
 interface TextFieldProps {
 	label: string;
 	name: string;
+	required?: boolean;
+	placeholder?: string;
+	inputProps?: InputBaseComponentProps;
 }
-const TextField: React.FC<TextFieldProps> = ({ label, name }) => {
-
+const TextField: React.FC<TextFieldProps> = ({
+	label,
+	name,
+	required = true,
+	placeholder,
+	inputProps,
+}) => {
 	return (
-		<StyledBox component='form'>
+		<StyledBox>
 			<FormControl variant='standard'>
 				<InputLabel
 					shrink
-					htmlFor='bootstrap-input'
+					htmlFor='input'
 				>
 					{label}
 				</InputLabel>
 				<BootstrapInput
-					id='bootstrap-input'
+					id='input'
 					name={name}
-					required
+					aria-label={name}
+					required={required}
+					inputProps={inputProps}
+					placeholder={placeholder}
+					role='textfield'
 				/>
 			</FormControl>
 		</StyledBox>
