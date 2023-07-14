@@ -69,18 +69,18 @@ const TextField: React.FC<TextFieldProps> = ({
 			<FormControl variant='standard'>
 				<InputLabel
 					shrink
-					htmlFor='input'
+					htmlFor={name}
 				>
 					{label}
 				</InputLabel>
 				<BootstrapInput
-					id='input'
+					id={name}
 					name={name}
 					aria-label={name}
 					required={required}
 					inputProps={inputProps}
-					placeholder={placeholder}
 					role='textfield'
+					placeholder={placeholder}
 				/>
 			</FormControl>
 		</StyledBox>

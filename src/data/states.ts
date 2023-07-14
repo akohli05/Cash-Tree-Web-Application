@@ -1,239 +1,239 @@
 const states = [
 	{
 		label: 'Alabama',
-		id: 'AL',
+		id: 'Alabama',
 	},
 	{
 		label: 'Alaska',
-		id: 'AK',
+		id: 'Alaska',
 	},
 	{
 		label: 'American Samoa',
-		id: 'AS',
+		id: 'American Samoa',
 	},
 	{
 		label: 'Arizona',
-		id: 'AZ',
+		id: 'Arizona',
 	},
 	{
 		label: 'Arkansas',
-		id: 'AR',
+		id: 'Arkansas',
 	},
 	{
 		label: 'California',
-		id: 'CA',
+		id: 'California',
 	},
 	{
 		label: 'Colorado',
-		id: 'CO',
+		id: 'Colorado',
 	},
 	{
 		label: 'Connecticut',
-		id: 'CT',
+		id: 'Connecticut',
 	},
 	{
 		label: 'Delaware',
-		id: 'DE',
+		id: 'Delaware',
 	},
 	{
 		label: 'District Of Columbia',
-		id: 'DC',
+		id: 'District Of Columbia',
 	},
 	{
 		label: 'Federated States Of Micronesia',
-		id: 'FM',
+		id: 'Federated States Of Micronesia',
 	},
 	{
 		label: 'Florida',
-		id: 'FL',
+		id: 'Florida',
 	},
 	{
 		label: 'Georgia',
-		id: 'GA',
+		id: 'Georgia',
 	},
 	{
 		label: 'Guam',
-		id: 'GU',
+		id: 'Guam',
 	},
 	{
 		label: 'Hawaii',
-		id: 'HI',
+		id: 'Hawaii',
 	},
 	{
 		label: 'Idaho',
-		id: 'ID',
+		id: 'Idaho',
 	},
 	{
 		label: 'Illinois',
-		id: 'IL',
+		id: 'Illinois',
 	},
 	{
 		label: 'Indiana',
-		id: 'IN',
+		id: 'Indiana',
 	},
 	{
 		label: 'Iowa',
-		id: 'IA',
+		id: 'Iowa',
 	},
 	{
 		label: 'Kansas',
-		id: 'KS',
+		id: 'Kansas',
 	},
 	{
 		label: 'Kentucky',
-		id: 'KY',
+		id: 'Kentucky',
 	},
 	{
 		label: 'Louisiana',
-		id: 'LA',
+		id: 'Louisiana',
 	},
 	{
 		label: 'Maine',
-		id: 'ME',
+		id: 'Maine',
 	},
 	{
 		label: 'Marshall Islands',
-		id: 'MH',
+		id: 'Marshall Islands',
 	},
 	{
 		label: 'Maryland',
-		id: 'MD',
+		id: 'Maryland',
 	},
 	{
 		label: 'Massachusetts',
-		id: 'MA',
+		id: 'Massachusetts',
 	},
 	{
 		label: 'Michigan',
-		id: 'MI',
+		id: 'Michigan',
 	},
 	{
 		label: 'Minnesota',
-		id: 'MN',
+		id: 'Minnesota',
 	},
 	{
 		label: 'Mississippi',
-		id: 'MS',
+		id: 'Mississippi',
 	},
 	{
 		label: 'Missouri',
-		id: 'MO',
+		id: 'Missouri',
 	},
 	{
 		label: 'Montana',
-		id: 'MT',
+		id: 'Montana',
 	},
 	{
 		label: 'Nebraska',
-		id: 'NE',
+		id: 'Nebraska',
 	},
 	{
 		label: 'Nevada',
-		id: 'NV',
+		id: 'Nevada',
 	},
 	{
 		label: 'New Hampshire',
-		id: 'NH',
+		id: 'New Hampshire',
 	},
 	{
 		label: 'New Jersey',
-		id: 'NJ',
+		id: 'New Jersey',
 	},
 	{
 		label: 'New Mexico',
-		id: 'NM',
+		id: 'New Mexico',
 	},
 	{
 		label: 'New York',
-		id: 'NY',
+		id: 'New York',
 	},
 	{
 		label: 'North Carolina',
-		id: 'NC',
+		id: 'North Carolina',
 	},
 	{
 		label: 'North Dakota',
-		id: 'ND',
+		id: 'North Dakota',
 	},
 	{
 		label: 'Northern Mariana Islands',
-		id: 'MP',
+		id: 'Northern Mariana Islands',
 	},
 	{
 		label: 'Ohio',
-		id: 'OH',
+		id: 'Ohio',
 	},
 	{
 		label: 'Oklahoma',
-		id: 'OK',
+		id: 'Oklahoma',
 	},
 	{
 		label: 'Oregon',
-		id: 'OR',
+		id: 'Oregon',
 	},
 	{
 		label: 'Palau',
-		id: 'PW',
+		id: 'Palau',
 	},
 	{
 		label: 'Pennsylvania',
-		id: 'PA',
+		id: 'Pennsylvania',
 	},
 	{
 		label: 'Puerto Rico',
-		id: 'PR',
+		id: 'Puerto Rico',
 	},
 	{
 		label: 'Rhode Island',
-		id: 'RI',
+		id: 'Rhode Island',
 	},
 	{
 		label: 'South Carolina',
-		id: 'SC',
+		id: 'South Carolina',
 	},
 	{
 		label: 'South Dakota',
-		id: 'SD',
+		id: 'South Dakota',
 	},
 	{
 		label: 'Tennessee',
-		id: 'TN',
+		id: 'Tennessee',
 	},
 	{
 		label: 'Texas',
-		id: 'TX',
+		id: 'Texas',
 	},
 	{
 		label: 'Utah',
-		id: 'UT',
+		id: 'Utah',
 	},
 	{
 		label: 'Vermont',
-		id: 'VT',
+		id: 'Vermont',
 	},
 	{
 		label: 'Virgin Islands',
-		id: 'VI',
+		id: 'Virgin Islands',
 	},
 	{
 		label: 'Virginia',
-		id: 'VA',
+		id: 'Virginia',
 	},
 	{
 		label: 'Washington',
-		id: 'WA',
+		id: 'Washington',
 	},
 	{
 		label: 'West Virginia',
-		id: 'WV',
+		id: 'West Virginia',
 	},
 	{
 		label: 'Wisconsin',
-		id: 'WI',
+		id: 'Wisconsin',
 	},
 	{
 		label: 'Wyoming',
-		id: 'WY',
+		id: 'Wyoming',
 	},
 ];
 

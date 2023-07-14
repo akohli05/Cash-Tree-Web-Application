@@ -56,24 +56,24 @@ const MailingAddressSection = () => {
 					/>
 					<br />
 					<TextField
-						label='Address Line 2 (Optional)'
+						label='Mailing Address Line 2 (Optional)'
 						name='addressAdditionalMailing'
 						required={false}
 					/>
 					<br />
 					<TextField
-						label='City'
+						label='Mailing City'
 						name='cityMailing'
 					/>
 					<br />
 					<SelectField
-						label='State'
+						label='Mailing State'
 						items={states}
 						name='stateMailing'
 					/>
 					<br />
 					<TextField
-						label='Zipcode'
+						label='Mailing Zipcode'
 						name='zipcodeMailing'
 					/>
 				</>
