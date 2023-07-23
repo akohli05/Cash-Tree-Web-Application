@@ -3,6 +3,7 @@ import AccountSelectionForm from '../components/AccountSelectionForm/AccountSele
 import BreadcrumbsBar from '../components/BreadcrumbsBar/BreadcrumbsBar';
 import { useContext } from 'react';
 import { AccountType, ApplicationContext } from '../context/ApplicationContext';
+import { addAccountType } from '../server/API';
 
 const AccountSelectionScreen = () => {
 	const navigate = useNavigate();
@@ -15,6 +16,7 @@ const AccountSelectionScreen = () => {
 
 		//navigate to /customer-form
 		navigate('/customer-form');
+
 	};
 	return (
 		<>

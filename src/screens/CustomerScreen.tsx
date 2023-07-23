@@ -5,46 +5,34 @@ import { ApplicationContext, Customer } from '../context/ApplicationContext';
 import { useContext } from 'react';
 
 const CustomerScreen = () => {
-	const navigate = useNavigate();
-	const applicationContext = useContext(ApplicationContext);
+  const navigate = useNavigate();
+  const applicationContext = useContext(ApplicationContext);
 
-	const onSubmit = (customer: Customer) => {
-		applicationContext.updateCustomer(customer);
+  const onSubmit = (customer: Customer) => {
+    //applicationContext.updateCustomer(customer);
 
-		let {
-			address,
-			addressAdditional,
-			city,
-			state,
-			zipcode,
-			isHomeandMailingSame,
-			addressMailing,
-			addressAdditionalMailing,
-			cityMailing,
-			stateMailing,
-			zipcodeMailing,
-		} = applicationContext.state.customer;
+    let { address, addressAdditional, city, state, zipcode } = customer;
 
-		if (isHomeandMailingSame === 'Yes') {
-			addressMailing = address;
-			addressAdditionalMailing = addressAdditional;
-			cityMailing = city;
-			stateMailing = state;
-			zipcodeMailing = zipcode;
-		}
+    if (customer.isHomeandMailingSame === 'Yes') {
+      customer.addressMailing = address;
+      customer.addressAdditionalMailing = addressAdditional;
+      customer.cityMailing = city;
+      customer.stateMailing = state;
+      customer.zipcodeMailing = zipcode;
+    }
 
-		applicationContext.updateCustomer(customer);
+    applicationContext.updateCustomer(customer);
 
-		//navigate to /summary
-		navigate('/summary');
-	};
+    //navigate to /summary
+    navigate('/summary');
+  };
 
-	return (
-		<>
-			<BreadcrumbsBar currentStep={2} />
-			<CustomerForm onSave={onSubmit} />
-		</>
-	);
+  return (
+    <>
+      <BreadcrumbsBar currentStep={2} />
+      <CustomerForm onSave={onSubmit} />
+    </>
+  );
 };
 
 export default CustomerScreen;
